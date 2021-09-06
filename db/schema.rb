@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_06_175914) do
+ActiveRecord::Schema.define(version: 2021_09_06_181338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2021_09_06_175914) do
 
   create_table "events", force: :cascade do |t|
     t.string "name"
-    t.string "status"
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "starts_at"
@@ -88,6 +88,17 @@ ActiveRecord::Schema.define(version: 2021_09_06_175914) do
     t.string "website"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.bigint "event_category_id", null: false
+    t.bigint "order_id", null: false
+    t.text "qr_code"
+    t.boolean "is_used", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_category_id"], name: "index_tickets_on_event_category_id"
+    t.index ["order_id"], name: "index_tickets_on_order_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -122,5 +133,7 @@ ActiveRecord::Schema.define(version: 2021_09_06_175914) do
   add_foreign_key "events", "venues", column: "venues_id"
   add_foreign_key "orders", "clients", column: "clients_id"
   add_foreign_key "orders", "events", column: "events_id"
+  add_foreign_key "tickets", "event_categories"
+  add_foreign_key "tickets", "orders"
   add_foreign_key "users", "organizations"
 end
