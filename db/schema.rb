@@ -38,5 +38,14 @@ ActiveRecord::Schema.define(version: 2021_09_06_154600) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "venues", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude"
+    t.float "longitude"
+  end
+
   add_foreign_key "users", "organizations"
 end
