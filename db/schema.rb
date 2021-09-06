@@ -10,10 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_06_172555) do
+
+ActiveRecord::Schema.define(version: 2021_09_06_165710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +43,35 @@ ActiveRecord::Schema.define(version: 2021_09_06_172555) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.bigint "organization_id", null: false
+    t.bigint "venues_id", null: false
+    t.index ["organization_id"], name: "index_events_on_organization_id"
+    t.index ["venues_id"], name: "index_events_on_venues_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "clients_id", null: false
+    t.bigint "events_id", null: false
+    t.index ["clients_id"], name: "index_orders_on_clients_id"
+    t.index ["events_id"], name: "index_orders_on_events_id"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -75,7 +106,12 @@ ActiveRecord::Schema.define(version: 2021_09_06_172555) do
     t.float "longitude"
   end
 
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "events", "organizations"
+  add_foreign_key "events", "venues", column: "venues_id"
+  add_foreign_key "orders", "clients", column: "clients_id"
+  add_foreign_key "orders", "events", column: "events_id"
   add_foreign_key "users", "organizations"
 end
