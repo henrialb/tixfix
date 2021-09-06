@@ -5,4 +5,5 @@ class Organization < ApplicationRecord
   has_one_attached :logo
 
   validates :name, presence: true, uniqueness: true
+  validates :website, uniqueness: true
 end
