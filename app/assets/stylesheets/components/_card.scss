@@ -1,0 +1,26 @@
+.card-trip {
+  overflow: hidden;
+  width: 250px;
+  height: 200px;
+  padding: 5px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  margin: 30px auto;
+  color:black;
+  text-align: center;
+  transition: ease 0.5s;
+
+  &:hover {
+    width: 300px;
+    height:250px;
+    opacity: 1;
+    box-shadow: none;
+  }
+
+  img {
+    height: 70%;
+    width: 100%;
+    background-size: center;
+  }
+}
