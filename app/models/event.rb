@@ -9,5 +9,5 @@ class Event < ApplicationRecord
 
   enum status: { incomplete: 0, offsale: 1, onsale: 2, past: 3, cancelled: 4 }
 
-  validates_presence_of :name, starts_at:, ends_at:
+  validates_presence_of :name, :starts_at, :ends_at
 end
