@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
-  has_many :event_categories
+  has_many :event_categories, dependent: :destroy
   has_many :tickets, through: :orders
-  has_many :orders
+  has_many :orders, dependent: :destroy
   has_many :clients, through: :orders
 
   belongs_to :venue
