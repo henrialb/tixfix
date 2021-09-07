@@ -173,3 +173,5 @@ orders.each do |order|
   end
 end
 puts 'Done creating tickets!'
+
+puts 'All seeds planted! 🌱'
