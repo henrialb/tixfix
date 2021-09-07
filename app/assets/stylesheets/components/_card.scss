@@ -11,11 +11,16 @@
   text-align: center;
   transition: ease 0.5s;
 
+  h1 {
+    font-size: 20px;;
+  }
+
   &:hover {
     width: 300px;
     height:250px;
     opacity: 1;
     box-shadow: none;
+    padding: 10px;
   }
 
   img {
