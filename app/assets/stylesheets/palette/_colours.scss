@@ -6,5 +6,5 @@ $grey-light: rgba(168,168,168,1);
 $grey-lighter: rgba(210,210,210,1);
 $white: rgba(255,255,255,1);
 $white-10pc: rgba(255,255,255,0.1);
-$transparent: rgba(255,255,255,0);
-$gradient:
+$transparent: opacity 0;
+$gradient-transparent: linear-gradient(0.82turn, rgba(255,255,255,0.2), rgba(170,170,170,0.2))
