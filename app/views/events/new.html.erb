@@ -1,11 +1,1 @@
-<div class="container">
-
-  <%= simple_form_for(@event) do |f| %>
-    <%= f.input :name, autofocus: true %>
-    <%= f.association :venue, collection: Venue.all %>
-    <%= f.input :starts_at %>
-    <%= f.input :ends_at %>
-    <%= f.submit :submit, class: 'btn-1', value: 'New event' %>
-  <% end %>
-
-</div>
+<%= render 'shared/forms/form', form: "new_event", model: @event %>
