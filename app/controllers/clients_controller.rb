@@ -1,5 +1,7 @@
 class ClientsController < ApplicationController
   def new
+    @client = Client.new
+    authorize @client
   end
 
   def create
