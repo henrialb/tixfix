@@ -21,19 +21,14 @@
 
   <body>
 
+    <%= render 'shared/navbar' %>
+
     <div class="d-flex flex-column min-vh-100">
-
-      <%= render 'shared/navbar' %>
-
-      <div class="flex-grow-1">
-
+      <div class="flex-grow-1" id="page-content">
         <%= yield %>
-
       </div>
-
       <%= render 'shared/flashes' %>
       <%= render 'shared/footer' %>
-
     </div>
 
   </body>
