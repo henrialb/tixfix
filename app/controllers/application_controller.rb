@@ -13,6 +13,11 @@ class ApplicationController < ActionController::Base
   #   # For additional in app/views/devise/registrations/edit.html.erb
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   # end
+  helper_method :current_organization
+  def current_organisation
+    current_user.organisation
+  end
+
 
   private
 
