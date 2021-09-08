@@ -6,18 +6,26 @@ class OrganizationPolicy < ApplicationPolicy
   end
 
   def new?
-    true
+    false
   end
 
   def create?
-    true
+    false
   end
 
   def show?
     true
   end
 
+  def edit?
+    true
+  end
+
   def update?
+    true
+  end
+
+  def index?
     true
   end
 
