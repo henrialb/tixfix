@@ -1,19 +1,6 @@
 Rails.application.routes.draw do
-  get 'clients/new'
-  get 'clients/create'
-  get 'clients/index'
-  get 'clients/show'
-  get 'clients/edit'
-  get 'clients/update'
-  get 'tickets/show'
-  get 'tickets/index'
-  get 'tickets/new'
-  get 'tickets/create'
-  get 'orders/new'
-  get 'orders/create'
-  get 'orders/edit'
-  get 'orders/update'
   devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
 
   resources :organizations, except: [:index, :destroy]
   resources :events, except: :destroy
