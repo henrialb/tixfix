@@ -4,4 +4,8 @@ class EventPolicy < ApplicationPolicy
       scope.where(organization: user.organization)
     end
   end
+
+  def create?
+    true
+  end
 end
