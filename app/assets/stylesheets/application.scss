@@ -11,4 +11,20 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import "palette/index";
+
+
+a {
+  text-decoration: none;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+    box-shadow: none;
+    text-decoration: none;
+  }
+}
+
+body {
+  margin:0;
+  background: rgba(220,220,220,0.8)
+}

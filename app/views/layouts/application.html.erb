@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sicktix</title>
+    <title>TickFix 🎟</title>
     <!-- DEFAULT SETTINGS -->
     <meta charset='UTF-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -10,16 +10,31 @@
     <!-- STANDARD RAILS SECURITY FEATURES -->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;800&family=Roboto:wght@100;300;500&display=swap" rel="stylesheet">
+    <!-- STYLE LINKS -->
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
 
-    <%= yield %>
+    <div class="d-flex flex-column min-vh-100">
+
+      <%= render 'shared/navbar' %>
+
+      <div class="flex-grow-1">
+
+        <%= yield %>
+
+      </div>
+
+      <%= render 'shared/flashes' %>
+      <%= render 'shared/footer' %>
+
+    </div>
+
   </body>
 </html>
