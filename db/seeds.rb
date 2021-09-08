@@ -37,6 +37,11 @@ puts 'Done!'
 
 # Create organizations
 
+puts "Creating Tixfix Inc."
+tixfix = Organization.new(name: 'TixFix', website: 'www.tixfix.xyz')
+tixfix.save!
+puts "Done!"
+
 15.times do
   organization = Faker::Sports::Football.unique.team
   website = Faker::Internet.domain_name
@@ -95,6 +100,19 @@ puts 'Done creating clients!'
 clients = Client.all
 
 # Create users
+
+puts "Creating Tixfix-ers"
+User.create!(
+  name: 'Pedro',
+  email: 'pedro@tixfix.xyz',
+  password: '12345678',
+  role: 1,
+  organization: tixfix)
+
+User.create!(name: 'Henrique', email: 'henrique@tixfix.xyz', password: '12345678', role: 1, organization: tixfix)
+User.create!(name: 'Thierry', email: 'thierry@tixfix.xyz', password: '12345678', role: 1, organization: tixfix)
+User.create!(name: 'Artur', email: 'artur@tixfix.xyz', password: '12345678', role: 1, organization: tixfix)
+puts "Done!"
 
 35.times do
   name = "#{Faker::Name.first_name} #{Faker::Name.last_name}"
