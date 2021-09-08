@@ -1,16 +1,17 @@
 .btn-1 {
-  background: $black;
+  background: $darker;
   opacity: 1;
   color: white;
   text-shadow: 1px 1px 2px gray;
   padding: 15px 25px;
   border-radius: 50px;
   display: inline-block;
-  box-shadow: 1px 1px 1px rgba(50,50,50,0.5);
+  box-shadow: 1px 1px 1px rgba(100,100,100,0.5);
   overflow: hidden;
   font-size: 15px;
 
   &:hover {
+    color: white;
     opacity: 1;
     box-shadow: none;
     cursor: pointer;

@@ -13,6 +13,8 @@
 
     <ul class="navbar-nav mr-auto">
 
+    <%# Nota-bene --removed 'nav-item' bootstrap class to override a tags styling %>
+
       <% if user_signed_in? %>
 
         <li class="nav-item active">
@@ -25,7 +27,7 @@
 
       <% end %>
 
-      <li>
+      <li class="nav-item">
         <%= link_to 'Create event', new_event_path, class: 'btn-1' %>
       </li>
 
