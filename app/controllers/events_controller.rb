@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   end
 
   def index
+    @events = policy_scope(Event)
   end
 
   def new
