@@ -1,7 +1,7 @@
 class EventPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(organization: user.organization)
     end
   end
 end
