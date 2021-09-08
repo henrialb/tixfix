@@ -29,9 +29,6 @@ Order.destroy_all
 puts 'Destroying event categories'
 EventCategory.destroy_all
 
-puts 'Destroying orders'
-Venue.destroy_all
-
 puts 'Destroying tickets'
 Ticket.destroy_all
 puts 'Done!'
