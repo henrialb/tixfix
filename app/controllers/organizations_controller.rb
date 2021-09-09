@@ -8,16 +8,16 @@ class OrganizationsController < ApplicationController
   end
 
   def edit
-    @organization = Organization.find(params[:id])
-    authorize @organization
+    fetch_organization
   end
 
   def update
+    fetch_organization
     if @organization.update(organization_params)
       authorize @organization
       redirect_to @organization, notice: 'Organization was sucessfully updated'
     else
-      render 'edit'
+      render :edit
     end
   end
 
