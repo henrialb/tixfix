@@ -2,19 +2,20 @@
   justify-content: space-between;
   background-color: transparent;
   transition: 0.5s background-color ease;
-  text-shadow: 1px 1px 2px $dark;
+  text-shadow: 1px 1px 1px lightgray;
 
-  .nav-item a {
+  a.nav-item {
     color: white;
   }
-}
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
+  .dropdown-item {
+    text-shadow: none;
+    color: $darker;
+  }
 
-.navbar-lewagon .navbar-brand img {
-  width: 150px;
+  a.dropdown-item {
+    color: $dark;
+  }
 }
 
 .navbar-lewagon-white {
@@ -29,9 +30,18 @@
   }
 }
 
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 150px;
+}
+
 li.nav-item {
   margin-left: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+
 }

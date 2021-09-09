@@ -1,11 +1,5 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12 col-sm-4-offset-4">
-      <div class="form">
+<%= render '../views/shared/forms/form_top'%>
 
-        <%= render "shared/forms/models/#{form}", model: model %>
+  <%= render "shared/forms/models/#{form}", model: model %>
 
-      </div>
-    </div>
-  </div>
-</div>
+<%= render '../views/shared/forms/form_bottom'%>
