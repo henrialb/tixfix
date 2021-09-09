@@ -2,6 +2,6 @@
   <h1><%= @event.name %></h1>
     <p><%= @event.starts_at %></p>
     <p><%= @event.ends_at %></p>
-    <p><%= @event.venue_id %></p>
+    <p><%= @event.venue.name %></p>
   <%= link_to 'Edit event', edit_event_path %>
 </div>
