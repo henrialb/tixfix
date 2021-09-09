@@ -26,6 +26,7 @@ class OrganizationsController < ApplicationController
   end
 
   def show
+    fetch_organization
   end
 
   private
@@ -38,5 +39,4 @@ class OrganizationsController < ApplicationController
     @organization = Organization.find(params[:id])
     authorize @organization
   end
-
 end
