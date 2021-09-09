@@ -1,5 +1,5 @@
 class OrganizationsController < ApplicationController
-  before_action :find_organization, only: [:show, :edit, :update]
+  before_action :fetch_organization, only: [:show, :edit, :update]
 
   def new
   end
@@ -34,7 +34,7 @@ class OrganizationsController < ApplicationController
     params.require(:organization).permit(:name, :website)
   end
 
-  def find_organization
+  def fetch_organization
     @organization = Organization.find(params[:id])
     authorize @organization
   end
