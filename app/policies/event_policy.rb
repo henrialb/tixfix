@@ -10,18 +10,18 @@ class EventPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    record.organization == user.organization
   end
 
   def edit?
-    true
+    record.organization == user.organization
   end
 
   def update?
-    true
+    record.organization == user.organization
   end
 
   def index?
-    true
+    record.organization == user.organization
   end
 end

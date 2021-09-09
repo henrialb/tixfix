@@ -1,13 +1,10 @@
 class EventsController < ApplicationController
   def show
-    @event = Event.find(params[:id])
-    authorize @event
+    fetch_event
   end
 
   def index
-  #  @events = Event.all
-  #  @events = Event.includes(:user).all
-  @events = policy_scope(Event)
+    @events = policy_scope(Event)
   end
 
   def new
@@ -32,6 +29,7 @@ class EventsController < ApplicationController
   end
 
   def update
+    fetch_event
     if @event.update(event_params)
       authorize @event
       redirect_to @event, notice: 'Event was sucessfully updated'
