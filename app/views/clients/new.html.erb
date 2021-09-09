@@ -1,2 +1,11 @@
 <h1>Clients#new</h1>
 <p>Find me in app/views/clients/new.html.erb</p>
+<div class = "container">
+<%= simple_form_for @client do |f| %>
+  <%= f.input :name %>
+  <%= f.input :email %>
+  <%= f.input :phone %>
+  <%= f.button :submit %>
+<% end %>
+<%= link_to 'Go Back', root_path, class: 'btn btn-light' %>
+<div>

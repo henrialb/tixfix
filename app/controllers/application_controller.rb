@@ -11,6 +11,13 @@ class ApplicationController < ActionController::Base
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
 
+  # TO DO - Discuss with Artur
+  helper_method :current_organization
+  def current_organisation
+    current_user.organisation
+  end
+
+
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
