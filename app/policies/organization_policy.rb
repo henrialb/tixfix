@@ -18,11 +18,11 @@ class OrganizationPolicy < ApplicationPolicy
   end
 
   def edit?
-    true
+    owner_or_admin
   end
 
   def update?
-    true
+    owner_or_admin?
   end
 
   def index?
