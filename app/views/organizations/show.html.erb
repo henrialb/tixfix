@@ -1,2 +1,5 @@
-<h1>Organizations#show</h1>
-<p>Find me in app/views/organizations/show.html.erb</p>
+<div class="container justify-content-between">
+  <h1><%= @organization.name %></h1>
+    <p><%= @organization.website %></p>
+  <%= link_to 'Edit organization', edit_organization_path %>
+</div>

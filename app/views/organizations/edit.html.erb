@@ -1,20 +1,12 @@
-<div class ="container">
+<%= render '../views/shared/forms/form_top'%>
+
+  <h2>Edit Organization
   <%= simple_form_for(@organization) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
     <%= f.input :name %>
-  </div>
-
-  <div class="form-inputs">
     <%= f.input :website%>
-  </div>
-
-  <br>
-  <div class="form-actions">
     <%= f.button :submit, class: "btn-1"%>
-  </div>
-  <br>
-<% end %>
-</div>
+  <% end %>
+
+<%= render '../views/shared/forms/form_bottom'%>

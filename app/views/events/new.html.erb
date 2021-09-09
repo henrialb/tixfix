@@ -1,5 +1,6 @@
-<div class="container">
+<%= render '../views/shared/forms/form_top'%>
 
+  <h2>New event</h2>
   <%= simple_form_for(@event) do |f| %>
     <%= f.input :name, autofocus: true %>
     <%= f.association :venue, collection: Venue.all %>
@@ -8,4 +9,4 @@
     <%= f.submit :submit, class: 'btn-1', value: 'New event' %>
   <% end %>
 
-</div>
+<%= render '../views/shared/forms/form_bottom'%>

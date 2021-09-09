@@ -1,2 +1,13 @@
-<h1>Events#edit</h1>
-<p>Find me in app/views/events/edit.html.erb</p>
+<%= render '../views/shared/forms/form_top'%>
+
+  <h2>Edit event
+  <%= simple_form_for(@event) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <%= f.input :name %>
+    <%= f.input :starts_at%>
+    <%= f.input :ends_at%>
+    <%= f.button :submit, class: "btn-1"%>
+  <% end %>
+
+<%= render '../views/shared/forms/form_bottom'%>

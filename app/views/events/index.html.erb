@@ -1,6 +1,3 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
-
 <% @events.each do |event| %>
-  <p><%= event.name %></p>
+  <h1><%= link_to event.organization.name, event %></h1>
 <% end %>
