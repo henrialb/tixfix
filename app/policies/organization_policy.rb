@@ -18,7 +18,7 @@ class OrganizationPolicy < ApplicationPolicy
   end
 
   def edit?
-    owner_or_admin
+    owner_or_admin?
   end
 
   def update?
@@ -30,12 +30,12 @@ class OrganizationPolicy < ApplicationPolicy
   end
 
   def destroy?
-    owner_or_admin?
+    owner_or_admin
   end
 
   private
 
   def owner_or_admin?
-    user == record.user
+    user.organization == record
   end
 end

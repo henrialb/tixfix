@@ -10,18 +10,24 @@ class EventPolicy < ApplicationPolicy
   end
 
   def show?
-    record.organization == user.organization
+    owner_or_admin?
   end
 
   def edit?
-    record.organization == user.organization
+    owner_or_admin?
   end
 
   def update?
-    record.organization == user.organization
+    owner_or_admin?
   end
 
   def index?
-    record.organization == user.organization
+    owner_or_admin?
+  end
+
+  private
+
+  def owner_or_admin?
+    user.organization == record.organization
   end
 end
