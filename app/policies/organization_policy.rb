@@ -18,11 +18,11 @@ class OrganizationPolicy < ApplicationPolicy
   end
 
   def edit?
-    true
+    owner_or_admin?
   end
 
   def update?
-    true
+    owner_or_admin?
   end
 
   def index?
@@ -30,12 +30,12 @@ class OrganizationPolicy < ApplicationPolicy
   end
 
   def destroy?
-    owner_or_admin?
+    owner_or_admin
   end
 
   private
 
   def owner_or_admin?
-    user == record.user
+    user.organization == record
   end
 end
