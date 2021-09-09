@@ -1,3 +1,6 @@
 <% @events.each do |event| %>
   <h1><%= link_to event.name, event %></h1>
+    <p> <%= event.venue.name %>
+    <p> <%= event.starts_at %></p>
+    <p> <%= event.ends_at %></p>
 <% end %>
