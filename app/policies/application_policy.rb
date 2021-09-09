@@ -36,6 +36,10 @@ class ApplicationPolicy
     false
   end
 
+  def admin_or_manager
+    User.roles.keys.first(2).include?(user.role)
+  end
+
   class Scope
     def initialize(user, scope)
       @user = user

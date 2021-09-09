@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
+  before_action :set_event, only: %i[show edit update]
+
   def show
-    fetch_event
+    set_event
   end
 
   def index
@@ -18,21 +20,23 @@ class EventsController < ApplicationController
     authorize @event
 
     if @event.save
-      redirect_to events_path, notice: 'Event successfully created.'
+      redirect_to edit_event_path(@event.id), notice: 'Event successfully created.'
     else
       render :new
     end
   end
 
   def edit
-    fetch_event
+    authorize @event
+    if @event.event_categories.empty?
+      @event.event_categories.build
+    end
   end
 
   def update
-    fetch_event
+    authorize @event
     if @event.update(event_params)
-      authorize @event
-      redirect_to @event, notice: 'Event was sucessfully updated'
+      redirect_to events_path, notice: 'Event was successfully updated.'
     else
       render :edit
     end
@@ -41,10 +45,21 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :starts_at, :ends_at, :venue_id)
+    params.require(:event).permit(
+      :name,
+      :starts_at,
+      :ends_at,
+      :venue_id,
+      event_categories_attributes: [
+        :id,
+        :name,
+        :price,
+        :capacity,
+        :_destroy
+      ])
   end
 
-  def fetch_event
+  def set_event
     @event = Event.find(params[:id])
     authorize @event
   end

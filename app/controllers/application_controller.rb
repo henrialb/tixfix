@@ -15,7 +15,16 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 
+  # TO DO - Discuss with Artur
+  # helper_method :current_organization
+
+
+  def current_organization
+    current_user.organization
+  end
+
   private
+
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/

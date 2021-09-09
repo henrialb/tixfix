@@ -4,6 +4,8 @@ class Event < ApplicationRecord
   has_many :tickets, through: :orders
   has_many :clients, through: :orders
 
+  accepts_nested_attributes_for :event_categories, allow_destroy: true
+
   belongs_to :venue
   belongs_to :organization
 

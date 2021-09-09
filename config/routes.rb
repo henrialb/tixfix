@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :organizations, except: [:destroy]
   resources :events, except: :destroy
-  resource :event_categories, except: [:index, :show, :destroy]
+  resource :event_categories, except: [:index, :show]
   resources :orders, except: [:edit, :update, :destroy]
   resources :tickets, except: [:edit, :update, :destroy]
   resources :venues, only: [:index, :show]
