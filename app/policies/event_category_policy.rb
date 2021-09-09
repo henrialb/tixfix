@@ -4,4 +4,11 @@ class EventCategoryPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def create?
+  end
+
+  def destroy?
+    admin_or_manager
+  end
 end
