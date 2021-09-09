@@ -18,19 +18,19 @@ class ClientsController < ApplicationController
   end
 
   def index
-   @clients = current_organisation.clients
+    @clients = policy_scope(Client)
   end
 
   def show
+    set_client
   end
 
   def edit
-
   end
 
   def update
     if @client.update(client_params)
-      redirect_to clients_path, notice: 'client was successfully updated.'
+      redirect_to clients_path, notice: 'Client was successfully updated.'
     else
       render :edit
     end
@@ -40,9 +40,10 @@ class ClientsController < ApplicationController
 
   def set_client
     @client = Client.find(params[:id])
+    authorize @client
   end
 
   def client_params
-  params.require(:client).permit(:name, :email, :phone)
+    params.require(:client).permit(:name, :email, :phone)
   end
 end
