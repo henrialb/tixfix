@@ -1,5 +1,5 @@
 class OrganizationsController < ApplicationController
-  before_action :fetch_organization, only: [:show, :edit, :update]
+  before_action :set_organization, only: [:show, :edit, :update]
 
   def new
   end
@@ -8,11 +8,11 @@ class OrganizationsController < ApplicationController
   end
 
   def edit
-    fetch_organization
+    set_organization
   end
 
   def update
-    fetch_organization
+    set_organization
     if @organization.update(organization_params)
       authorize @organization
       redirect_to @organization, notice: 'Organization was sucessfully updated'
@@ -26,7 +26,7 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-    fetch_organization
+    set_organization
   end
 
   private
@@ -35,7 +35,7 @@ class OrganizationsController < ApplicationController
     params.require(:organization).permit(:name, :website)
   end
 
-  def fetch_organization
+  def set_organization
     @organization = Organization.find(params[:id])
     authorize @organization
   end

@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-  before_action :set_client, only: [:show, :edit, :update]
+  before_action :set_client, only: %i[show edit update]
   def new
     @client = Client.new
     authorize @client
@@ -7,7 +7,7 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new(client_params)
-    @clients.organization = current_organisation
+    @clients.organization = current_organization
     authorize @client
 
     if @client.save

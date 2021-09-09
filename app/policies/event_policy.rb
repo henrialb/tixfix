@@ -13,21 +13,15 @@ class EventPolicy < ApplicationPolicy
     admin_or_manager
   end
 
-  private
-
-  def admin_or_manager
-    User.roles.keys.first(2).include?(user.role)
-  end
+# def admin_or_manager
+#  User.roles.keys.first(2).include?(user.role)
+# end
 
   def show?
     owner_or_admin?
   end
 
   def edit?
-    owner_or_admin?
-  end
-
-  def update?
     owner_or_admin?
   end
 
