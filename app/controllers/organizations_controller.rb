@@ -1,5 +1,5 @@
 class OrganizationsController < ApplicationController
-  before_action :find_organization, only: [:show, :edit, :update, :index]
+  before_action :fetch_organization, only: [:show, :edit, :update]
 
   def new
   end
@@ -15,28 +15,28 @@ class OrganizationsController < ApplicationController
   def update
     if @organization.update(user_params)
       authorize @organization
-      redirect_to @organization
+      redirect_to @organization, notice: 'Organization was sucessfully updated'
     else
       render 'edit'
     end
   end
 
   def index
+    @organizations = policy_scope(Organization)
   end
 
   def show
-    @organizations = Organization.all
-    authorize @organizations
   end
 
   private
 
-  def user_params
+  def organization_params
     params.require(:organization).permit(:name, :website)
   end
 
-  def find_organization
+  def fetch_organization
     @organization = Organization.find(params[:id])
+    authorize @organization
   end
 
 end
