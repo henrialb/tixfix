@@ -13,7 +13,7 @@ class OrganizationsController < ApplicationController
   end
 
   def update
-    if @organization.update(user_params)
+    if @organization.update(organization_params)
       authorize @organization
       redirect_to @organization, notice: 'Organization was sucessfully updated'
     else
