@@ -14,10 +14,9 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.organization = current_user.organization
-
     authorize @event
 
-    if @event.valid?
+    if @event.save
       redirect_to events_path, notice: 'Event successfully created.'
     else
       render :new
