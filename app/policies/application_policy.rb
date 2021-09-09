@@ -50,4 +50,8 @@ class ApplicationPolicy
 
     attr_reader :user, :scope
   end
+
+  def admin_or_manager
+    User.roles.keys.first(2).include?(user.role)
+  end
 end
