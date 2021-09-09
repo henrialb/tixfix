@@ -36,6 +36,6 @@ class ClientPolicy < ApplicationPolicy
   private
 
   def owner_or_admin?
-    user.client == record.client
+    user.client == record
   end
 end

@@ -1,8 +1,8 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update]
+  before_action :set_event, only: %i[show edit update]
 
   def show
-    fetch_event
+    set_event
   end
 
   def index
@@ -27,7 +27,6 @@ class EventsController < ApplicationController
   end
 
   def edit
-
     authorize @event
     if @event.event_categories.empty?
       @event.event_categories.build
@@ -44,10 +43,6 @@ class EventsController < ApplicationController
   end
 
   private
-
-  def set_event
-    @event = Event.find(params[:id])
-  end
 
   def event_params
     params.require(:event).permit(
