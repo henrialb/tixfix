@@ -1,2 +1,18 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<%= simple_form_for [ @event, @order ] do |f| %>
+
+  <%= f.fields_for :tickets do |form| %>
+
+    <% form.input :is_used %>
+    <% form.association :event_categories, collection: @event.event_categories %>
+
+  <% end %>
+
+  <%= f.simple_fields_for :clients do |form| %>
+
+    <% form.input :name %>
+    <% form.input :email %>
+    <% form.input :phone %>
+
+  <% end %>
+
+<% end %>

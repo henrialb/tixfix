@@ -8,6 +8,9 @@ class OrdersController < ApplicationController
   end
 
   def new
+    @event = Event.find(params[:event_id])
+    @order = Order.new
+    authorize @order
   end
 
   def create

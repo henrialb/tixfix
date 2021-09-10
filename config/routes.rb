@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
 
   resources :organizations, except: [:destroy]
-  resources :events, except: :destroy
+  resources :events, except: :destroy do
+    resources :orders, except: [:edit, :update, :destroy]
+  end
   resource :event_categories, except: [:index, :show]
-  resources :orders, except: [:edit, :update, :destroy]
   resources :tickets, except: [:edit, :update, :destroy]
   resources :venues, only: [:index, :show]
   resources :clients, except: :destroy
