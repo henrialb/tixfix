@@ -1,5 +1,5 @@
 class OrganizationsController < ApplicationController
-  before_action :set_organization, only: [:show, :edit, :update]
+  before_action :set_organization, only: %i[show edit update]
 
   def new
   end
