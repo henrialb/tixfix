@@ -25,11 +25,12 @@
       </div>
 
       <div class="categories">
+        <h5>Ticket prices</h5>
         <% @event.categories.each do |category, price| %>
-          <div class="d-flex justify-content-between">
+          <div class="d-flex justify-content-between py-3 text-muted">
             <span><%= category %></span>
-            <span class=""></span>
-            <span><%= price %></span>
+            <span class="flex-grow-1 bottom-dotted mx-3"></span>
+            <span><%= price %> €</span>
           </div>
         <% end %>
 
