@@ -1,4 +1,4 @@
-<div class="container justify-content-between">
+<div class="flex-container justify-content-between">
   <h1>Upcoming events</h1>
     <% @events.each do |event| %>
         <div class="card border-dark mb-3 text-center">
@@ -6,7 +6,7 @@
             <h2 class="card-title"><%= event.name %></h2>
               <p class="card-text"> <%= event.venue.name %></p>
               <p class="card-text"> <%= event.starts_at %></p>
-              <a href="#"> <%= link_to 'Edit Event', event, class: 'btn btn-1' %></a>
+              <a href="#"> <%= link_to 'View Event', event, class: 'btn btn-1' %></a>
             <%#  <input type="checkbox" checked data-toggle="toggle"> %>
           </div>
         </div>
