@@ -60,9 +60,9 @@ Venue.create!(name: 'Estádio Municipal Mário Wilson', address: 'Rua Coro de Sa
 puts 'Estádio Municipal Mário Wilson added to venues'
 Venue.create!(name: 'Estádio José Gomes', address: 'Avenida Dom José Primeiro')
 puts 'Estádio José Gomes added to venues'
-Venue.create!(name: 'Estádio Municipal de Aveiro', address: 'Lugar Taboeira, Aveiro')
+Venue.create!(name: 'Estádio Municipal de Aveiro', address: 'Aveiro')
 puts 'Estádio Municipal de Aveiro added to venues'
-Venue.create!(name: 'Estádio Pina Manique', address: 'Estrada das Bungavilhas')
+Venue.create!(name: 'Estádio Pina Manique', address: 'Avenida Santos Dumont')
 puts 'Estádio Pina Manique added to venues'
 Venue.create!(name: 'Estádio Municipal do Fontelo', address: 'Avenida José Relvas 6, Viseu')
 puts 'Estádio Municipal do Fontelo added to venues'
@@ -70,11 +70,11 @@ Venue.create!(name: 'Estádio Marcolino de Castro', address: 'Avenida Clube Desp
 puts 'Estádio Marcolino de Castro added to venues'
 Venue.create!(name: 'Estádio Municipal de Mafra', address: 'Parque Desportivo Municipal de Mafra')
 puts 'Estádio Municipal de Mafra added to venues'
-Venue.create!(name: 'Estádio Municipal José dos Santos Pinto', address: 'Rua Sítio do Pinho do Gaiteiro 7, Covilhã')
+Venue.create!(name: 'Estádio Municipal José dos Santos Pinto', address: 'Covilhã')
 puts 'Estádio Municipal José dos Santos Pinto added to venues'
-Venue.create!(name: 'Estádio Municipal 25 de Abril', address: 'Rua Futebol Clube de Penafiel, Penafiel')
+Venue.create!(name: 'Estádio Municipal 25 de Abril', address: 'Penafiel')
 puts 'Estádio Municipal 25 de Abril added to venues'
-Venue.create!(name: 'Estádio de São Luís', address: 'Rua do Sporting Club Farense, Faro')
+Venue.create!(name: 'Estádio de São Luís', address: 'Faro')
 puts 'Estádio de São Luís added to venues'
 
 puts "Done creating venues!"
@@ -159,9 +159,9 @@ events = Event.all
 # Create event categories
 events.each do |event|
   multiplier = rand(1..3)
-  EventCategory.create(event: event, price: 5 * multiplier, capacity: 5000, name: 'Superior')
-  EventCategory.create(event: event, price: 10 * multiplier, capacity: 2500, name: 'Lateral')
-  EventCategory.create(event: event, price: 15 * multiplier, capacity: 2500, name: 'Central')
+  EventCategory.create(event: event, price: 5 * multiplier, capacity: 300, name: 'Superior')
+  EventCategory.create(event: event, price: 10 * multiplier, capacity: 200, name: 'Lateral')
+  EventCategory.create(event: event, price: 15 * multiplier, capacity: 200, name: 'Central')
   puts "Categories created for #{event.name}"
 end
 

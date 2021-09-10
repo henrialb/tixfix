@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update]
 
   def show
-    set_event
+    @marker = [{ lat: @event.venue.latitude, lng: @event.venue.longitude }]
   end
 
   def index
