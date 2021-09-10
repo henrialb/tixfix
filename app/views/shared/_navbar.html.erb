@@ -15,24 +15,14 @@
 
     <%# Nota-bene --removed 'nav-item' bootstrap class to override a tags styling %>
 
-
       <% if user_signed_in? %>
 
         <li class="nav-item active">
-        <% if action_name == "home" %>
-      <%= link_to "Home", root_path, class: "nav-link white" %>
-      <% else %>
-      <%= link_to "Home", root_path, class: "nav-link black" %>
-      <% end %>
-
+          <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
 
-        <li class="nav-item white">
-        <% if  action_name == "home" %>
-          <%= link_to "Events", events_path, class: "nav-link white" %>
-          <% else %>
-          <%= link_to "Events", events_path, class: "nav-link black" %>
-          <% end %>
+        <li class="nav-item">
+          <%= link_to "Events", events_path, class: "nav-link" %>
         </li>
 
       <% end %>
@@ -48,8 +38,8 @@
           <% if current_user.avatar.attached? %>
             <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, alt: "avatar" %>
           <% else %>
-            <span class="avatar dropdown-toggle avatar-letter-details" style="background: white" id="navbarDropdown" data-toggle="dropdown" data-aria-haspopup="true" data-aria-expanded="false" alt="avatar">
-             <p> <%= current_user.name.first%> </p>
+            <span class="avatar dropdown-toggle" style="background: white" id="navbarDropdown" data-toggle="dropdown" data-aria-haspopup="true" data-aria-expanded="false" alt="avatar">
+              <%= current_user.name.first%>
             </span>
           <% end %>
 
