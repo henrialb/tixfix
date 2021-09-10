@@ -10,36 +10,4 @@ class Event < ApplicationRecord
   enum status: { incomplete: 0, offsale: 1, onsale: 2, past: 3, cancelled: 4 }
 
   validates_presence_of :name, :starts_at, :ends_at
-
-  def inventory
-    inventory = {}
-    event_categories.each do |category|
-      name = category.name
-      capacity = category.capacity
-      # price = category.price
-      inventory[name] = capacity
-      # inventory[name] = [capacity, price]
-    end
-    inventory
-  end
-
-  def tickets_sold
-    tickets_sold = {}
-    event_categories.each do |category|
-      name = category.name
-      quantity_sold = Ticket.where(event_category: category).count
-      tickets_sold[name] = quantity_sold
-    end
-    tickets_sold
-  end
-
-  def categories
-    categories = {}
-    event_categories.each do |category|
-      name = category.name
-      price = category.price
-      categories[name] = price
-    end
-    categories
-  end
 end

@@ -1,11 +1,9 @@
-<% relative_time = @event.starts_at > Time.now ? "in #{time_ago_in_words(@event.starts_at)}" : "#{time_ago_in_words(@event.starts_at)} ago" %>
-
 <div class="container justify-content-between">
   <%= link_to 'Edit event', edit_event_path %>
-  <p><%= @event.starts_at.strftime("%A, %B %d, %Y") %> | <%= relative_time %></p>
+  <p><%= @event.starts_at.strftime("%A, %B %d, %Y") %> | <%= relative_time(@event) %></p>
   <h1><%= @event.name %></h1>
   <p><%= @event.tickets.count %> tickets sold (<%= percentage_sold(@event) %>% of inventory) € sold</p>
-  <div class="progress" style="height: 2px;">
+  <div class="progress progress-thin">
     <div class="progress-bar" role="progressbar" style="width: <%= percentage_sold(@event) %>%;" aria-valuenow="<%= percentage_sold(@event) %>" aria-valuemin="0" aria-valuemax="100"></div>
   </div>
 
@@ -14,23 +12,22 @@
   <div class="row">
     <div class="col-6 pr-5">
       <div class="categories-progress">
-        <% @event.tickets_sold.each do |category, total| %>
-          <% percentage_category_sold = percentage(total, @event.inventory[category]) %>
-          <p><%= category %></p>
-          <div class="progress" style="height: 28px;">
-            <div class="progress-bar" role="progressbar" style="width: <%= percentage_category_sold %>;" aria-valuenow="<%= percentage_category_sold %>" aria-valuemin="0" aria-valuemax="100"><%= percentage_category_sold %>%</div>
+        <% @event.event_categories.each do |category| %>
+          <p><%= category.name %></p>
+          <div class="progress progress-fat">
+            <div class="progress-bar" role="progressbar" style="width: <%= category.percentage_sold %>;" aria-valuenow="<%= category.percentage_sold %>" aria-valuemin="0" aria-valuemax="100"><%= category.percentage_sold %>%</div>
           </div>
-          <p><%= "#{total} sold / #{percentage_category_sold}%" %></p>
+          <p><%= "#{category.tickets.count} sold / #{category.percentage_sold}%" %> - <%= category.capacity - category.tickets.count %></p>
         <% end %>
       </div>
 
       <div class="categories">
         <h5>Ticket prices</h5>
-        <% @event.categories.each do |category, price| %>
+        <% @event.event_categories.each do |category| %>
           <div class="d-flex justify-content-between py-3 text-muted">
-            <span><%= category %></span>
+            <span><%= category.name %></span>
             <span class="flex-grow-1 bottom-dotted mx-3"></span>
-            <span><%= price %> €</span>
+            <span><%= category.price %> €</span>
           </div>
         <% end %>
 

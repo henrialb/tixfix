@@ -32,3 +32,11 @@ body {
 .bottom-dotted {
   border-bottom: 1px dotted $dark;
 }
+
+.progress-thin {
+  height: 2px;
+}
+
+.progress-fat {
+  height: 28px;
+}
