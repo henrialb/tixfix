@@ -6,7 +6,7 @@
     Most likely means user is creating event for the first time %>
     <% if @event.event_categories.first.valid? %>
 
-      <h2>Event information</h2>
+      <h2>Edit event</h2>
       <%= f.input :name, autofocus: true %>
       <%= f.association :venue, collection: Venue.all %>
       <%= f.input :starts_at %>
@@ -14,36 +14,29 @@
 
     <% end %>
 
+    <br>
     <h2>Price categories</h2>
-    <%= f.simple_fields_for :event_categories do |form| %>
+    <div data-controller="event-category-add">
 
-      <div class="form-row">
+      <template data-target="event-category-add.template">
+        <%= f.fields_for :event_categories, EventCategory.new, child_index: 'NEW_RECORD' do |form| %>
+          <%= render 'event_categories/fields', form: form %>
+        <% end %>
+      </template>
 
-          <div class="form-group col">
-            <%= form.input :name, class: "form-control"%>
-          </div>
-
-          <div class="form-group col">
-            <%= form.input :price, class: "form-control"%>
-          </div>
-
-          <div class="form-group col">
-            <%= form.input :capacity, class: "form-control"%>
-          </div>
-
-          <div class="form-group col d-flex justify-content-around align-items-center">
-            <%= link_to event_categories_path(form.object.id),
-              method: :delete,
-              data: { confirm: "Are you sure?" } do %>
-                <i class="fas fa-trash-alt"></i>
-            <% end %>
-          </div>
-
-        </div>
-
+      <%= f.fields_for :event_categories do |form| %>
+        <%= render 'event_categories/fields', form: form %>
       <% end %>
 
-    <%# TODO ==> JS ADD EVENT CATEGORY BUTTON HERE %>
+      <div class="form-group col" data-target="event-category-add.links">
+        <%= link_to '+ Add Category', class: '', data: { action: 'click->event-category-add#addField' } do %>
+          + Add category
+        <% end %>
+      </div>
+
+    </div>
+
+
     <%= f.submit :submit, class: 'btn-1' %>
   <% end %>
 

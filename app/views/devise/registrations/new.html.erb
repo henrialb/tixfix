@@ -6,9 +6,11 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name, autofocus: true %>
+    <%= f.input :name, autofocus: true, placeholder: "Luis Figgo" %>
+
     <%= f.input :email,
                 required: true,
+                placeholder: "diego@maradona.pt",
                 input_html: { autocomplete: "email" }%>
     <%= f.input :password,
                 required: true,

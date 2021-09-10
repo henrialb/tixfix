@@ -1,9 +1,5 @@
 class EventCategoriesController < ApplicationController
   def new
-    @event = Event.find(params[:event_id])
-    # @event_category = Event.new
-    3.times { @event.event_categories.build }
-    authorize @event
   end
 
   def create
