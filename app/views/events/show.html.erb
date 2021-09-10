@@ -1,3 +1,5 @@
+<% relative_time = @event.starts_at > Time.now ? "in #{time_ago_in_words(@event.starts_at)}" : "#{time_ago_in_words(@event.starts_at)} ago" %>
+
 <div class="container justify-content-between">
   <%= link_to 'Edit event', edit_event_path %>
   <p><%= @event.starts_at.strftime("%A, %B %d, %Y") %> | <%= relative_time(@event) %></p>
@@ -49,3 +51,12 @@
     </div>
   </div>
 </div>
+
+<% if @event.image.attached? %>
+  <%= cl_image_tag @event.image.key, height: 300, width: 400, crop: :fill, alt: "event flyer" %>
+<% end %>
+<% if @event.venue_map.attached? %>
+  <%= cl_image_tag @event.venue_map.key, height: 300, width: 400, crop: :fill, alt: "venue map" %>
+<% elsif @event.venue.map.attached? %>
+  <%= cl_image_tag @event.venue.map.key, height: 300, width: 400, crop: :fill, alt: "venue map" %>
+<% end %>

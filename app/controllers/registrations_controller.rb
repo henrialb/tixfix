@@ -3,9 +3,10 @@ class RegistrationsController < Devise::RegistrationsController
     super do |user|
       name = "#{user.name}'s Organization"
       user.create_organization(name: name)
-      user.save!
-      # org = Organization.create!(name: name)
-      # user.organization_id = org.id
+
+      unless user.save
+        flash.now[:alert] = "Error: #{user.errors.full_messages.join("\n")}"
+      end
     end
   end
 end

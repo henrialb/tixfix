@@ -1,0 +1,20 @@
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row wrap;
+  align-items: stretch;
+}
+
+.flex-item {
+  flex-grow: 1;
+}
+
+.flex-item img {
+  height: 120px;
+  width: 120px;
+  background-size: center;
+}
+
+.card-link {
+  align-items: center;
+}
