@@ -14,8 +14,16 @@
       </div>
     </div>
 
-    <%= f.input :starts_at %>
-    <%= f.input :ends_at %>
+    <div class="row">
+      <div class="form-group col">
+        <%= f.input :starts_at, as: :string, input_html: {class: "datepicker", id: "range_start"} %>
+      </div>
+      <div class="form-group col">
+        <%= f.input :ends_at, as: :string, input_html: {class: "datepicker", id: "range_end"} %>
+      </div>
+    </div>
+
+
     <%= f.submit :submit, class: 'btn-1', value: 'New event' %>
   <% end %>
 

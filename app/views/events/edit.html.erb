@@ -9,10 +9,24 @@
       <h2>Edit event</h2>
       <%= f.input :name, autofocus: true %>
       <%= f.association :venue, collection: Venue.all %>
-      <%= f.input :image, as: :file, label: "Upload your flyer" %>
-      <%= f.input :venue_map, as: :file, label: "Upload your own venue map" %>
-      <%= f.input :starts_at %>
-      <%= f.input :ends_at %>
+
+      <div class="row">
+        <div class="form-group col">
+          <%= f.input :image, as: :file, label: "Upload your flyer 📢" %>
+        </div>
+        <div class="form-group col">
+          <%= f.input :venue_map, as: :file, label: "Upload your own venue map 🎫" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col">
+          <%= f.input :starts_at, as: :string, input_html: {class: "datepicker", id: "range_start"} %>
+        </div>
+        <div class="form-group col">
+          <%= f.input :ends_at, as: :string, input_html: {class: "datepicker", id: "range_end"} %>
+        </div>
+      </div>
 
     <% end %>
 
