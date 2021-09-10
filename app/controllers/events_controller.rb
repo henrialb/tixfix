@@ -51,6 +51,7 @@ class EventsController < ApplicationController
       :starts_at,
       :ends_at,
       :venue_id,
+      :image,
       event_categories_attributes: [
         :id,
         :name,

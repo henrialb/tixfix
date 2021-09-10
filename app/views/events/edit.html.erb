@@ -9,6 +9,8 @@
       <h2>Edit event</h2>
       <%= f.input :name, autofocus: true %>
       <%= f.association :venue, collection: Venue.all %>
+      <%= f.input :image, as: :file, label: "Upload your flyer" %>
+      <%= f.input :venue_map, as: :file, label: "Upload your own venue map" %>
       <%= f.input :starts_at %>
       <%= f.input :ends_at %>
 

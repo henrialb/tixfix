@@ -4,6 +4,16 @@
   <%= simple_form_for(@event) do |f| %>
     <%= f.input :name, autofocus: true %>
     <%= f.association :venue, collection: Venue.all %>
+
+    <div class="form-row" >
+      <div class="form-group col">
+        <%= f.input :image, as: :file, label: "Upload your flyer" %>
+      </div>
+      <div class="form-group col">
+        <%= f.input :venue_map, as: :file, label: "Upload your own venue map" %>
+      </div>
+    </div>
+
     <%= f.input :starts_at %>
     <%= f.input :ends_at %>
     <%= f.submit :submit, class: 'btn-1', value: 'New event' %>
