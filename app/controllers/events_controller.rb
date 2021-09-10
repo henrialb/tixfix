@@ -22,6 +22,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to edit_event_path(@event.id), notice: 'Event successfully created.'
     else
+      flash.now[:alert] = "Error: #{@event.errors.full_messages.join("\n")}"
       render :new
     end
   end

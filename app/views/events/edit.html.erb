@@ -6,7 +6,7 @@
     Most likely means user is creating event for the first time %>
     <% if @event.event_categories.first.valid? %>
 
-      <h2>Event information</h2>
+      <h2>Edit event</h2>
       <%= f.input :name, autofocus: true %>
       <%= f.association :venue, collection: Venue.all %>
       <%= f.input :starts_at %>
