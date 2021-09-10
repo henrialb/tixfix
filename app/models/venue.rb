@@ -4,6 +4,8 @@ class Venue < ApplicationRecord
 
   has_many :events
 
+  has_one_attached :map
+
   validates_presence_of :name, :address
   validates :address, uniqueness: { scope: :name}
 end

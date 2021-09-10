@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   belongs_to :organization, optional: true
   has_many :events, through: :organization
+
   has_one_attached :avatar
 
   validates_presence_of :name, :role
