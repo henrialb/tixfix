@@ -1,6 +1,19 @@
-<% @events.each do |event| %>
-  <h1><%= link_to event.name, event %></h1>
-    <p> <%= event.venue.name %>
-    <p> <%= event.starts_at %></p>
-    <p> <%= event.ends_at %></p>
-<% end %>
+<div class="container justify-content-between">
+  <h1>Upcoming events</h1>
+    <% @events.each do |event| %>
+        <div class="flex-container card border-dark mb-3">
+          <div class="flex-item">
+            <img src="placeholderpfp" class="card-img" alt="Event Picture">
+          </div>
+          <div class="flex-item card-body text-center">
+            <h2 class="card-title"><%= link_to event.name, event %></h2>
+            <p class="card-subtitle"> <%= event.venue.name %></p>
+          </div>
+          <div class="flex-item card-body text-center">
+            <p class="card-text"> <%= event.starts_at %></p>
+            <p class="card-text"> <%= event.ends_at %></p>
+          <%#  <a class="card-link" href="#"> <%= link_to 'View Event', event, class: 'btn btn-1' %></a>
+          </div>
+        </div>
+    <% end %>
+</div>
