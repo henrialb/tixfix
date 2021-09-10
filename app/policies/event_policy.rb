@@ -13,10 +13,6 @@ class EventPolicy < ApplicationPolicy
     admin_or_manager && record.organization == user.organization
   end
 
-# def admin_or_manager
-#  User.roles.keys.first(2).include?(user.role)
-# end
-
   def show?
     owner_or_admin? && record.organization == user.organization
   end

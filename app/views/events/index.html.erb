@@ -1,20 +1,22 @@
 <div class="container justify-content-between">
-  <h1>Upcoming events</h1>
+  <h1 class="card-title">Upcoming events</h1>
     <% @events.each do |event| %>
-        <div class="flex-container card border-dark mb-3">
-          <div class="flex-item">
-            <img src="placeholderpfp" class="card-img" alt="Event Picture">
-          </div>
-          <div class="flex-item card-body text-center">
-            <h2 class="card-title"><%= link_to event.name, event %></h2>
-            <p class="card-subtitle"> <%= event.venue.name %></p>
-          </div>
-          <div class="flex-item card-body text-center">
-            <p class="card-text"> <%= event.starts_at %></p>
-            <p class="card-text"> <%= event.ends_at %></p>
-          <%#  <a class="card-link" href="#"> <%= link_to 'View Event', event, class: 'btn btn-1' %></a>
 
+        <div class="card-body link">
+          <div class="flex-container card border-dark mb-3">
+            <div class="flex-item img">
+              <%= image_tag "placeholderpfp.jpg" %>
+            </div>
+            <div class="flex-item card-body text-center">
+              <h2 class="card-title"><%= link_to event.name, event %></h2>
+              <p class="card-subtitle"> <%= event.venue.name %></p>
+            </div>
+            <div class="flex-item card-body text-center">
+              <p class="card-text"> <%= event.starts_at %></p>
+              <p class="card-text"> <%= event.ends_at %></p>
+            </div>
           </div>
         </div>
+
     <% end %>
 </div>

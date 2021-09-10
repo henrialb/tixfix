@@ -52,13 +52,14 @@ class EventsController < ApplicationController
       :ends_at,
       :venue_id,
       :image,
-      event_categories_attributes: [
-        :id,
-        :name,
-        :price,
-        :capacity,
-        :_destroy
-      ])
+      event_categories_attributes: %i[
+        id
+        name
+        price
+        capacity
+        _destroy
+      ]
+    )
   end
 
   def set_event
