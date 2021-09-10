@@ -11,4 +11,8 @@ module EventsHelper
 
     event.starts_at > Time.now ? "in #{time}" : "#{time} ago"
   end
+
+  def revenue(category)
+    number_to_currency(category.price * category.tickets.count, unit: '€', strip_insignificant_zeros: true)
+  end
 end

@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
   def show
     fetch_event
+
+    @marker = { lat: @event.venue.latitude, lng: @event.venue.longitude }
   end
 
   def index
