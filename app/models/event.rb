@@ -16,7 +16,9 @@ class Event < ApplicationRecord
     event_categories.each do |category|
       name = category.name
       capacity = category.capacity
+      # price = category.price
       inventory[name] = capacity
+      # inventory[name] = [capacity, price]
     end
     inventory
   end
@@ -29,5 +31,15 @@ class Event < ApplicationRecord
       tickets_sold[name] = quantity_sold
     end
     tickets_sold
+  end
+
+  def categories
+    categories = {}
+    event_categories.each do |category|
+      name = category.name
+      price = category.price
+      categories[name] = price
+    end
+    categories
   end
 end

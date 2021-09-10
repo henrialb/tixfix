@@ -12,18 +12,31 @@
   <p><%= @event.venue.name %></p>
 
   <div class="row">
-    <div class="col-6">
-      <% @event.tickets_sold.each do |category, total| %>
-        <% percentage_category_sold = percentage(total, @event.inventory[category]) %>
-        <p><%= category %></p>
-        <div class="progress">
-          <div class="progress-bar" role="progressbar" style="width: <%= percentage_category_sold %>;" aria-valuenow="<%= percentage_category_sold %>" aria-valuemin="0" aria-valuemax="100"><%= percentage_category_sold %>%</div>
-        </div>
-        <p><%= "#{total} sold / #{percentage_category_sold}%" %></p>
-      <% end %>
+    <div class="col-6 pr-5">
+      <div class="categories-progress">
+        <% @event.tickets_sold.each do |category, total| %>
+          <% percentage_category_sold = percentage(total, @event.inventory[category]) %>
+          <p><%= category %></p>
+          <div class="progress" style="height: 28px;">
+            <div class="progress-bar" role="progressbar" style="width: <%= percentage_category_sold %>;" aria-valuenow="<%= percentage_category_sold %>" aria-valuemin="0" aria-valuemax="100"><%= percentage_category_sold %>%</div>
+          </div>
+          <p><%= "#{total} sold / #{percentage_category_sold}%" %></p>
+        <% end %>
+      </div>
+
+      <div class="categories">
+        <% @event.categories.each do |category, price| %>
+          <div class="d-flex justify-content-between">
+            <span><%= category %></span>
+            <span class=""></span>
+            <span><%= price %></span>
+          </div>
+        <% end %>
+
+      </div>
     </div>
 
-    <div class="col-6 d-flex align-items-start">
+    <div class="col-6 d-flex align-items-start pl-5">
       <span class="bg-light px-2 rounded mr-2">https://www.tixfix.xyz/events/237</span>
       <span class="badge rounded-pill bg-danger text-white">Copy link</span>
 
