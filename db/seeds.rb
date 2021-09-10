@@ -72,10 +72,10 @@ Venue.create!(name: 'Estádio Municipal de Mafra', address: 'Parque Desportivo M
 puts 'Estádio Municipal de Mafra added to venues'
 Venue.create!(name: 'Estádio Municipal José dos Santos Pinto', address: 'Rua Sítio do Pinho do Gaiteiro 7, Covilhã')
 puts 'Estádio Municipal José dos Santos Pinto added to venues'
-Venue.create!(name: 'Estádio Municipal 25 de Abril', address: 'Rua Futebol Clube de Penafiel, Penafie')
+Venue.create!(name: 'Estádio Municipal 25 de Abril', address: 'Rua Futebol Clube de Penafiel, Penafiel')
 puts 'Estádio Municipal 25 de Abril added to venues'
-Venue.create!(name: 'Estádio de São Lúis', address: 'Rua do Sporting Club Farense, Faro')
-puts 'Estádio de São Lúis added to venues'
+Venue.create!(name: 'Estádio de São Luís', address: 'Rua do Sporting Club Farense, Faro')
+puts 'Estádio de São Luís added to venues'
 
 puts "Done creating venues!"
 venues = Venue.all

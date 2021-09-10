@@ -1,7 +1,33 @@
+<% relative_time = @event.starts_at > Time.now ? "in #{time_ago_in_words(@event.starts_at)}" : "#{time_ago_in_words(@event.starts_at)} ago" %>
+
 <div class="container justify-content-between">
-  <h1><%= @event.name %></h1>
-    <p><%= @event.starts_at %></p>
-    <p><%= @event.ends_at %></p>
-    <p><%= @event.venue.name %></p>
   <%= link_to 'Edit event', edit_event_path %>
+  <p><%= @event.starts_at.strftime("%A, %B %d, %Y") %> | <%= relative_time %></p>
+  <h1><%= @event.name %></h1>
+  <p><%= @event.tickets.count %> tickets sold (<%= percentage_sold(@event) %>% of inventory) € sold</p>
+  <div class="progress" style="height: 2px;">
+    <div class="progress-bar" role="progressbar" style="width: <%= percentage_sold(@event) %>%;" aria-valuenow="<%= percentage_sold(@event) %>" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+
+  <p><%= @event.venue.name %></p>
+
+  <div class="row">
+    <div class="col-6">
+      <% @event.tickets_sold.each do |category, total| %>
+        <% percentage_category_sold = percentage(total, @event.inventory[category]) %>
+        <p><%= category %></p>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: <%= percentage_category_sold %>;" aria-valuenow="<%= percentage_category_sold %>" aria-valuemin="0" aria-valuemax="100"><%= percentage_category_sold %>%</div>
+        </div>
+        <p><%= "#{total} sold / #{percentage_category_sold}%" %></p>
+      <% end %>
+    </div>
+
+    <div class="col-6 d-flex align-items-start">
+      <span class="bg-light px-2 rounded mr-2">https://www.tixfix.xyz/events/237</span>
+      <span class="badge rounded-pill bg-danger text-white">Copy link</span>
+
+    </div>
+
+  </div>
 </div>
