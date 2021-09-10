@@ -159,9 +159,9 @@ events = Event.all
 # Create event categories
 events.each do |event|
   multiplier = rand(1..3)
-  EventCategory.create(event: event, price: 5 * multiplier, capacity: 5000, name: 'Superior')
-  EventCategory.create(event: event, price: 10 * multiplier, capacity: 2500, name: 'Lateral')
-  EventCategory.create(event: event, price: 15 * multiplier, capacity: 2500, name: 'Central')
+  EventCategory.create(event: event, price: 5 * multiplier, capacity: 300, name: 'Superior')
+  EventCategory.create(event: event, price: 10 * multiplier, capacity: 200, name: 'Lateral')
+  EventCategory.create(event: event, price: 15 * multiplier, capacity: 200, name: 'Central')
   puts "Categories created for #{event.name}"
 end
 
