@@ -6,7 +6,8 @@ class OrdersController < ApplicationController
   end
 
   def show
-    set_order
+    @order = Order.find(params[:id])
+    authorize @order
   end
 
   def new
@@ -16,9 +17,9 @@ class OrdersController < ApplicationController
 
   def create
 
-    @order = Order.create!(event: @event)
-
     authorize @order
+
+    @order = Order.create!(event: @event)
 
     @event.event_categories.each do |category|
 
@@ -43,19 +44,12 @@ class OrdersController < ApplicationController
       flash.now[:alert] = "Error: #{@order.errors.full_messages.join("\n")}"
       render :new
     end
-
-
   end
 
   private
 
   def orders_params
     params.require(:order).permit(:event_id, :client_id, :tickets_for)
-  end
-
-  def set_order
-    @order = Order.find(params[:id])
-    authorize @order
   end
 
   def set_event
