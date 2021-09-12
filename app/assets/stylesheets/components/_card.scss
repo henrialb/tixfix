@@ -28,7 +28,40 @@
 // --------------------------------------------------------------------------
 // STRIPES
 
+.card-title {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
 .card-stripe{
-  width: 100%
-  // TODO: specific CSS code here
+  width: 100%;
+  height: 70%;
+  border: 3px solid $darker;
+  border-radius: 5px;
+  opacity: 0.8;
+  background-color: white;
+
+  h2 {
+    font-size: 30px;
+  }
+
+  p {
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+.card-content{
+  text-align: center;
+  padding: 10px;
+}
+
+.card-date {
+  text-align: right;
+  margin-right: 20px;
 }
