@@ -44,7 +44,7 @@
               </div>
 
               <div class="card-ticket-img-placeholder">
-                <h1>QR code</h1>
+                <%= @svg.html_safe? %>
               </div>
             </div>
 
@@ -59,15 +59,15 @@
       <% end %>
 
       <div class="d-flex justify-content-end">
-        <%= link_to event_path(@event.id), method: :get, class: 'btn-2 mr-3' do %>
+        <%= link_to event_path(@event.id), method: :get, class: 'btn-2 mr-3 m-2' do %>
           Back to Event
         <% end %>
 
-        <%= link_to event_orders_path(@event.id), method: :get, class: 'btn-2 mr-3' do %>
+        <%= link_to event_orders_path(@event.id), method: :get, class: 'btn-2 mr-3 m-2' do %>
           Back to Orders
         <% end %>
 
-        <%= link_to '', method: :get, class: 'btn-1 mr-3' do %>
+        <%= link_to '', method: :get, class: 'btn-1 mr-3 m-2' do %>
           Print all
         <% end %>
       </div>
