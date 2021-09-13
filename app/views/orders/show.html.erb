@@ -24,8 +24,10 @@
                 <h1><%= @event.name %></h1>
                 <p><%= @event.starts_at.strftime("%a %d %b %Y, %-l:%M%p") %></p>
                 <small>Ticket #<%= ticket.id %></small>
+                <small>QR # <%= ticket.hex %></small>
               </div>
             </div>
+
 
             <div class="card-ticket-stripe-right">
               <div class="card-ticket-stripe-info-right">
@@ -43,8 +45,8 @@
                 <% end %>
               </div>
 
-              <div class="card-ticket-img-placeholder">
-                <h1>QR code</h1>
+              <div class="card-ticket-img">
+                <%= ticket.qr_code %>
               </div>
             </div>
 
@@ -59,15 +61,15 @@
       <% end %>
 
       <div class="d-flex justify-content-end">
-        <%= link_to event_path(@event.id), method: :get, class: 'btn-2 mr-3' do %>
+        <%= link_to event_path(@event.id), method: :get, class: 'btn-2 mr-3 m-2' do %>
           Back to Event
         <% end %>
 
-        <%= link_to event_orders_path(@event.id), method: :get, class: 'btn-2 mr-3' do %>
+        <%= link_to event_orders_path(@event.id), method: :get, class: 'btn-2 mr-3 m-2' do %>
           Back to Orders
         <% end %>
 
-        <%= link_to '', method: :get, class: 'btn-1 mr-3' do %>
+        <%= link_to '', method: :get, class: 'btn-1 mr-3 m-2' do %>
           Print all
         <% end %>
       </div>

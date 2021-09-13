@@ -28,7 +28,6 @@ class OrdersController < ApplicationController
           Ticket.create!(
             event_category: category,
             order: @order,
-            qr_code: "TODO",
             is_used: false,
             )
         end
