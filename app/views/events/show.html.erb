@@ -3,25 +3,36 @@
 <div class="container justify-content-between">
   <p class="fw-light mb-2"><%= @event.starts_at.strftime("%A, %B %d, %Y") %> &thinsp; | &thinsp; <%= relative_time(@event) %></p>
   <div class="d-flex align-items-center justify-content-between">
-    <h1><%= @event.name %></h1>
-    <%= link_to 'Edit event', edit_event_path, class: 'btn-2 me-3' %>
+    <h1 class="flex-grow-1"><%= @event.name %></h1>
+    <% if Time.now > @event.starts_at && Time.now < @event.ends_at %>
+      <div class="text-danger me-4 uppercase">
+        <span class="spinner-grow spinner-grow-sm" role="status"></span>
+        <span style="letter-spacing: 1px;">&thinsp;LIVE</span>
+      </div>
+    <% else %>
+      <!-- Just for testing - remove this -->
+      <div class="text-danger me-4 uppercase">
+        <span class="spinner-grow spinner-grow-sm" role="status"></span>
+        <span style="letter-spacing: 1px;">&thinsp;LIVE</span>
+      </div>
+      <!-- End here -->
+      <%= link_to 'Edit event', edit_event_path, class: 'btn-2 me-3' %>
+    <% end %>
   </div>
-  <p class="mb-1"><%= @event.tickets.count %> tickets sold (<%= percentage_sold(@event) %>% of inventory) &thinsp; | &thinsp;<%= total_revenue(@event) %>€ sold</p>
+  <p class="mb-1 text-muted"><%= @event.tickets.count %> tickets sold (<%= percentage_sold(@event) %>% of inventory) &thinsp; | &thinsp;<%= total_revenue(@event) %>€ sold</p>
   <div class="progress progress-thin">
     <div class="progress-bar" role="progressbar" style="width: <%= percentage_sold(@event) %>%;" aria-valuenow="<%= percentage_sold(@event) %>" aria-valuemin="0" aria-valuemax="100"></div>
   </div>
 
-  <!-- <p><%= @event.venue.name %></p> -->
-
-  <div class="row mt-5">
-    <div class="col-6 pe-5">
-      <div class="categories-progress">
+  <div class="row mt-5 d-flex justify-content-between">
+    <div class="col-sm-12 col-lg-5 mb-5">
+      <div class="categories-progress text-muted">
         <% @event.event_categories.each do |category| %>
           <div class="mb-4">
             <div class="d-flex justify-content-between">
-              <span><%= category.name %></span>
+              <span class="ps-3"><%= category.name %></span>
               <!-- <span class="flex-grow-1 bottom-dotted mx-3"></span>-->
-              <span class="text-muted pe-1"><%= category.price %>€</span>
+              <span class="pe-3"><%= category.price %>€</span>
             </div>
             <div class="progress progress-fat rounded-pill">
               <div class="progress-bar" role="progressbar"
@@ -30,27 +41,17 @@
                 aria-valuemin="0" aria-valuemax="100"><%= revenue(category) %>
               </div>
             </div>
-            <div class="progress-info d-flex justify-content-between text-muted pt-2">
-              <div class="small"><%= "#{category.tickets.count} sold / #{category.percentage_sold}%" %></div>
-              <div class="fw-light small"><%= category.capacity - category.tickets.count %> to go</div>
+            <div class="progress-info d-flex justify-content-between pt-2">
+              <div class="small ps-3"><%= "#{category.tickets.count} sold / #{category.percentage_sold}%" %></div>
+              <div class="fw-light small pe-3"><%= category.capacity - category.tickets.count %> to go</div>
             </div>
           </div>
         <% end %>
       </div>
-
-      <!-- <div class="categories">
-        <h5>Ticket prices</h5>
-        <% @event.event_categories.each do |category| %>
-          <div class="d-flex justify-content-between py-3 text-muted">
-            <span><%= category.name %></span>
-            <span class="flex-grow-1 bottom-dotted mx-3"></span>
-            <span><%= category.price %> €</span>
-          </div>
-        <% end %>
-      </div> -->
     </div>
 
-    <div class="col-6 ps-5">
+    <div class="col-sm-12 col-lg-6">
+    <!-- Copy link -->
       <!--  <div class="d-flex align-items-center">
         <span class="bg-light px-2 rounded me-2">https://www.tixfix.xyz/events/237</span>
         <span class="badge rounded-pill bg-danger text-white">Copy link</span>
