@@ -2,56 +2,46 @@
 // LANDING PAGE CARDS
 
 .card-landing {
-  height: 500px;
-  max-width: 450px;
+  height: 450px;
+  max-width: 400px;
   padding: 40px;
   overflow: hidden;
-  margin: 50px auto;
+  margin: 70px auto;
   padding: 10px 20px;
   background: $white;
   border-radius: 10px;
   text-align: center;
+  box-shadow: 1px 1px 2px $core;
+  transition: ease 1s;
 
   img {
     background-size: cover;
-    background-size: center;
     height: 60%;
     width: 100%;
   }
 
+  i {
+    font-size: 150px;
+    margin: 30px auto;
+    color: $darker;
+  }
+
   h1 {
-      font-size: 30px;
+    font-size: 30px;
   }
 
   p {
-
+    font-size: 20px;
+    font-weight: 300;
+    color: $darker;
   }
 
-
   &:hover {
-  //  width: 300px;
-  //  height:250px;
     opacity: 1;
     box-shadow: none;
-    padding: 5px;
+    margin: 40px auto;
   }
 }
-
-.card-landing .hidden-text {
-  visibility: hidden;
-
-  &:hover {
-    visibility: visible;
-  }
-}
-
-
-// .col-centered {
-//   float: none;
-//   margin: 0 auto;
-// }
-
-
 
 // --------------------------------------------------------------------------
 // EVENTS STRIPES
