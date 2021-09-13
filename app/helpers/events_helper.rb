@@ -15,4 +15,16 @@ module EventsHelper
   def revenue(category)
     number_to_currency(category.price * category.tickets.count, unit: '€', strip_insignificant_zeros: true)
   end
+
+  def revenue_i(category)
+    category.price * category.tickets.count
+  end
+
+  def total_revenue(event)
+    revenue = 0
+    event.event_categories.each do |category|
+      revenue += revenue_i(category)
+    end
+    revenue
+  end
 end
