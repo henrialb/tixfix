@@ -26,7 +26,7 @@
 }
 
 // --------------------------------------------------------------------------
-// STRIPES
+// EVENTS STRIPES
 
 .card-title {
   margin-top: 20px;
@@ -65,4 +65,79 @@
 .card-date {
   text-align: right;
   margin-right: 20px;
+}
+
+// --------------------------------------------------------------------------
+// TICKETS STRIPES
+
+// Whole card properties
+.card-ticket-stripe {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  box-shadow: 1px 1px 5px $dark;
+  border-radius: 10px;
+  background-color: $lighter;
+
+  h1 {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.card-ticket-img-placeholder {
+  width: 100px;
+  background-size: cover;
+  background: $black;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+// Left-hand side properties
+.card-ticket-stripe-left {
+  display: flex;
+  height: 100%;
+
+  .card-ticket-img-placeholder {
+    border-radius: 10px 0 0 10px;
+  }
+}
+
+.card-ticket-stripe-info-left {
+  padding: 8px 16px;
+}
+
+// Right-hand side properties
+.card-ticket-stripe-right {
+  display: flex;
+  height: 100%;
+
+  .card-ticket-img-placeholder {
+    border-radius: 0 10px 10px 0;
+  }
+}
+
+.card-ticket-stripe-info-right {
+  text-align: right;
+  padding: 8px 16px;
+}
+
+// print button
+
+.print-btn {
+  font-size: 40px;
+  margin: 0 16px;
 }
