@@ -5,7 +5,7 @@
       <%= link_to event_path(@event.id), method: :get, class: '' do %>
         <h1><%= @event.name %></h1>
       <% end%>
-      <h2><%= @event.starts_at.strftime("%a %-d %b %y, %-k:%M") %></h2>
+      <h2><%= @event.starts_at.strftime("%a %d %b %Y, %-l:%M%p") %></h2>
       <h1>Orders</h1>
 
 
@@ -29,7 +29,7 @@
 
           <tr>
             <th>Sum</th>
-            <th><%=  Time.now.strftime("%a %-d %b %y") %></th>
+            <th><%=  Time.now.strftime("%d %b, %-l:%M%p")%></th>
               <% @event.event_categories.each do |category| %>
                 <th><%= category.tickets.count %></th>
               <% end %>
@@ -37,22 +37,27 @@
           </tr>
 
           <% @event.orders.each do |order| %>
-            <tr>
-              <th scope="row">
-                <%= order.id %>
-              </th>
-              <th>
-                <%= order.created_at.strftime("%a %-d %b %y") %>
-              </th>
-              <% @event.event_categories.each do |category| %>
-                <th>
-                  <%= order.inventory[category.id] %>
+
+            <%= link_to event_order_path(@event.id, order.id), method: :get, class: '' do %>
+
+              <tr>
+                <th scope="row">
+                  <%= order.id %>
                 </th>
-              <% end %>
-              <th>
-                €<%= order.tickets.map { |ticket| ticket.event_category.price }.sum %>
-              </th>
-            </tr>
+                <th>
+                  <%= order.created_at.strftime("%d %b, %-l:%M%p")%>
+                </th>
+                <% @event.event_categories.each do |category| %>
+                  <th>
+                    <%= order.inventory[category.id] %>
+                  </th>
+                <% end %>
+                <th>
+                  €<%= order.tickets.map { |ticket| ticket.event_category.price }.sum %>
+                </th>
+              </tr>
+            <% end %>
+
           <% end %>
 
         </tbody>
