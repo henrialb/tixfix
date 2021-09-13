@@ -9,6 +9,6 @@ class Ticket < ApplicationRecord
   private
 
   def generate_qr_code
-    self.qr_code = SecureRandom.hex
+    RQRCode::QRCode.new(self.qr_code)
   end
 end

@@ -3,24 +3,28 @@
 
 .card-landing {
   height: 500px;
-  width: 300px;
+  max-width: 450px;
   padding: 40px;
-  margin-bottom: 80px;
-  margin-top: 40px;
-//  border: solid 5px;
-//  border-radius: 100px;
-//  border-color: $darker;
+  overflow: hidden;
+  margin: 50px auto;
+  padding: 10px 20px;
+  background: $white;
+  border-radius: 10px;
+  text-align: center;
 
   img {
     background-size: cover;
     background-size: center;
-    height: 70%;
+    height: 60%;
     width: 100%;
-
   }
 
   h1 {
-      font-size: 40px;
+      font-size: 30px;
+  }
+
+  p {
+
   }
 
 
@@ -35,16 +39,17 @@
 
 .card-landing .hidden-text {
   visibility: hidden;
+
+  &:hover {
+    visibility: visible;
+  }
 }
 
-.card-landing:hover .hidden-text {
-  visibility: visible;
-}
 
-.col-centered {
-  float: none;
-  margin: 0 auto;
-}
+// .col-centered {
+//   float: none;
+//   margin: 0 auto;
+// }
 
 
 
