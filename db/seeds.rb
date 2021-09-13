@@ -188,7 +188,7 @@ Order.all.each do |order|
     is_used = order.event.ends_at < Time.now
 
     ticket = Ticket.create!(event_category: event_category, order: order, is_used: is_used)
-    puts "Ticket #{ticket.qr_code} created."
+    puts "Ticket #{ticket.hex} created."
   end
 end
 puts 'Done creating tickets!'
