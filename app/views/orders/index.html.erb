@@ -1,14 +1,18 @@
 <%= render '../views/shared/forms/form_top'%>
 
-<h1><%= @event.name %></h1>
-<h1><%= @event.starts_at %></h1>
+<%= link_to event_path(@event.id), method: :get, class: '' do %>
+  <h1><%= @event.name %></h1>
+<% end%>
+<h2><%= @event.starts_at.strftime("%a %-d %b %y, %-k:%M") %></h2>
 <h1>Orders</h1>
+
 
 <table class="table table-striped mt-3 mb-3 bg-white rounded">
 
   <thead class="thead-light">
     <tr>
-      <th scope="col">Order id</th>
+      <th scope="col">#id</th>
+      <th scope="col">Date</th>
       <% @event.event_categories.each do |category| %>
         <th scope="col">
           <%= category.name %>
@@ -22,24 +26,28 @@
   <tbody>
 
     <tr>
-      <th scope="col">Total</th>
+      <th>Sum</th>
+      <th><%=  Time.now.strftime("%a %-d %b %y") %></th>
         <% @event.event_categories.each do |category| %>
-          <th scope="col"><%= category.tickets.count %></th>
+          <th><%= category.tickets.count %></th>
         <% end %>
-      <th scope="col">€<%= total_revenue(@event) %></th>
+      <th>€<%= total_revenue(@event) %></th>
     </tr>
 
     <% @event.orders.each do |order| %>
       <tr>
-        <th scope="col">
+        <th scope="row">
           <%= order.id %>
         </th>
+        <th>
+          <%= order.created_at.strftime("%a %-d %b %y") %>
+        </th>
         <% @event.event_categories.each do |category| %>
-          <th scope="col">
+          <th>
             <%= order.inventory[category.id] %>
           </th>
         <% end %>
-        <th scope="col">
+        <th>
           €<%= order.tickets.map { |ticket| ticket.event_category.price }.sum %>
         </th>
       </tr>
@@ -47,5 +55,9 @@
 
   </tbody>
 </table>
+
+<%= link_to event_path(@event.id), method: :get, class: 'btn-2 mr-3' do %>
+  Back to Event page
+<% end %>
 
 <%= render '../views/shared/forms/form_bottom'%>

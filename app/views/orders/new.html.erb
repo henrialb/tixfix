@@ -21,4 +21,8 @@
   <%= f.submit :submit, class: "btn-1", value: "Create order" %>
   <% end %>
 
+  <%= link_to event_path(@event.id), method: :get, class: 'btn-2 mr-3' do %>
+    Go Back
+  <% end %>
+
 <%= render '../views/shared/forms/form_bottom'%>

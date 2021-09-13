@@ -16,11 +16,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-
-    authorize @order
-
     @order = Order.create!(event: @event)
-
+    authorize @order
     @event.event_categories.each do |category|
 
       if params[:tickets_for].first.keys.include?(category.id.to_s)

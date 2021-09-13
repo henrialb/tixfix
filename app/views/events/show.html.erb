@@ -59,9 +59,25 @@
   </div>
 
   <br>
-  <%= link_to new_event_order_path(@event.id), method: :get, class: 'btn-1' do %>
-    + New Order
-  <% end %>
+
+
+    <div class="d-flex justify-content-end">
+
+      <%= link_to events_path, method: :get, class: 'btn-2 mr-3' do %>
+        Go Back
+      <% end %>
+
+      <%= link_to event_orders_path(@event.id), method: :get, class: 'btn-2 mr-3' do %>
+        See Orders
+      <% end %>
+
+      <%= link_to new_event_order_path(@event.id), method: :get, class: 'btn-1 mr-3' do %>
+        + New Order
+      <% end %>
+
+    </div>
+
+
 
 </div>
 
