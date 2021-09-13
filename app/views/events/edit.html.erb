@@ -10,7 +10,7 @@
       <%= f.input :name, autofocus: true %>
       <%= f.association :venue, collection: Venue.all %>
 
-      <div class="row">
+      <div class="row form-spacer">
         <div class="form-group col">
           <%= f.input :image, as: :file, label: "Upload your flyer 📢" %>
         </div>
@@ -33,7 +33,6 @@
     <br>
     <h2>Price categories</h2>
     <div data-controller="event-category-add">
-
       <template data-target="event-category-add.template">
         <%= f.fields_for :event_categories, EventCategory.new, child_index: 'NEW_RECORD' do |form| %>
           <%= render 'event_categories/fields', form: form %>
@@ -52,14 +51,8 @@
 
     </div>
 
-
-    <%= f.submit :submit, class: 'btn-1' %>
+    <%= f.submit 'Submit', class: 'btn-1' %>
+    <%= link_to 'Cancel', event_path(@event), method: :get, class: 'btn-2' %>
   <% end %>
 
 <%= render '../views/shared/forms/form_bottom'%>
-
-<div class="d-flex justify-content-end">
-  <%= link_to new_event_path, method: :get, class: 'btn-2 mr-3' do %>
-              Go back
-    <% end %>
-</div>
