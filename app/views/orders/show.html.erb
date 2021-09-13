@@ -24,8 +24,10 @@
                 <h1><%= @event.name %></h1>
                 <p><%= @event.starts_at.strftime("%a %d %b %Y, %-l:%M%p") %></p>
                 <small>Ticket #<%= ticket.id %></small>
+                <small>QR # <%= ticket.hex %></small>
               </div>
             </div>
+
 
             <div class="card-ticket-stripe-right">
               <div class="card-ticket-stripe-info-right">
@@ -43,7 +45,7 @@
                 <% end %>
               </div>
 
-              <div class="card-ticket-img-placeholder">
+              <div class="card-ticket-img">
                 <%= ticket.qr_code %>
               </div>
             </div>
