@@ -1,6 +1,6 @@
 .flex-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-flow: row wrap;
   align-items: stretch;
 }
@@ -13,8 +13,5 @@
   height: 120px;
   width: 120px;
   background-size: center;
-}
-
-.card-link {
-  align-items: center;
+  margin-left: 0px;
 }
