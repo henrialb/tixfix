@@ -1,4 +1,77 @@
-<div class="container justify-content-between">
-  <h1><%= @order.event_id %></h1>
-    <p><%= @order.client_id %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-8 offset-lg-2 bg-white rounded-lg p-3 mt-3 mb-5">
+
+      <h1><%= @order.event.name %></h1>
+      <p>Order #<%= @order.id %></p>
+
+      <% @order.tickets.each do |ticket| %>
+
+        <div class="d-flex justify-space-between align-items-center">
+
+          <div class="card-ticket-stripe flex-grow-1">
+
+            <div class="card-ticket-stripe-left">
+              <div class="card-ticket-img-placeholder">
+                <% if @event.image.attached? %>
+                  <%= cl_image_tag @event.image.key, crop: :fill, alt: "event flyer" %>
+                <% else %>
+                  <h1>FUN!</h1>
+                <% end %>
+              </div>
+
+              <div class="card-ticket-stripe-info-left">
+                <h1><%= @event.name %></h1>
+                <p><%= @event.starts_at.strftime("%a %d %b %Y, %-l:%M%p") %></p>
+                <small>Ticket #<%= ticket.id %></small>
+              </div>
+            </div>
+
+            <div class="card-ticket-stripe-right">
+              <div class="card-ticket-stripe-info-right">
+                <p><%= ticket.event_category.name %></p>
+                <h1>€<%= ticket.event_category.price %></h1>
+
+                <% if ticket.is_used %>
+                  <small class="danger">
+                    Already used ❌
+                  </small>
+                <% else %>
+                  <small>
+                    Valid ✔
+                  </small>
+                <% end %>
+              </div>
+
+              <div class="card-ticket-img-placeholder">
+                <h1>QR code</h1>
+              </div>
+            </div>
+
+          </div>
+
+          <%= link_to '', method: :get, class: 'print-btn' do %>
+            <i class="fas fa-print"></i>
+          <% end %>
+
+        </div>
+
+      <% end %>
+
+      <div class="d-flex justify-content-end">
+        <%= link_to event_path(@event.id), method: :get, class: 'btn-2 mr-3' do %>
+          Back to Event
+        <% end %>
+
+        <%= link_to event_orders_path(@event.id), method: :get, class: 'btn-2 mr-3' do %>
+          Back to Orders
+        <% end %>
+
+        <%= link_to '', method: :get, class: 'btn-1 mr-3' do %>
+          Print all
+        <% end %>
+      </div>
+
+    </div>
+  </div>
 </div>
