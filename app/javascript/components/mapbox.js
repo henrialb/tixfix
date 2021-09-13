@@ -15,12 +15,12 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/henrialb/cktej0pwx2csh18qrmfwmi2lg'
+      style: 'mapbox://styles/henrialb/cktelr0mt2fnt17s0thy0cnjp'
     });
 
     const markers = JSON.parse(mapElement.dataset.markers);
     markers.forEach((marker) => {
-      new mapboxgl.Marker()
+      new mapboxgl.Marker({ "color": "#000" })
         .setLngLat([marker.lng, marker.lat])
         .addTo(map);
     });
