@@ -1,7 +1,7 @@
 <% relative_time = @event.starts_at > Time.now ? "in #{time_ago_in_words(@event.starts_at)}" : "#{time_ago_in_words(@event.starts_at)} ago" %>
 
 <div class="container justify-content-between">
-  <p class="font-weight-light mb-2"><%= @event.starts_at.strftime("%A, %B %d, %Y") %> &thinsp; | &thinsp; <%= relative_time(@event) %></p>
+  <p class="font-weight-light mb-2 text-muted"><%= @event.starts_at.strftime("%A, %B %d, %Y") %> &thinsp; | &thinsp; <%= relative_time(@event) %></p>
   <div class="d-flex align-items-center justify-content-between">
     <h1 class="flex-grow-1"><%= @event.name %></h1>
     <% if Time.now > @event.starts_at && Time.now < @event.ends_at %>
@@ -63,7 +63,7 @@
           <div class="mr-3 text-primary"><i class="fas fa-map-marker-alt fa-2x"></i></div>
           <div class="flex-grow-1">
             <p class="mb-0"><%= @event.venue.name %></p>
-            <p class="font-weight-lighter mb-0"><%= @event.venue.address %></p>
+            <p class="font-weight-light text-muted mb-0"><%= @event.venue.address %></p>
           </div>
         </div>
       </div>
