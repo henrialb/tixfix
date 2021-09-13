@@ -1,5 +1,5 @@
 <%# https://github.com/lewagon/awesome-navbars/blob/master/templates/_navbar_wagon_without_login.html.erb %>
-<div class="navbar navbar-expand-sm navbar-lewagon sticky-top <%= controller_name == 'pages' ? '' : 'navbar-lewagon-white' %>">
+<div class="navbar navbar-expand-sm navbar-lewagon <%= controller_name == 'pages' ? 'fixed-top' : 'navbar-lewagon-white sticky-top' %>">
   <%= link_to "/", class: "navbar-brand" do %>
     <%= image_tag "logo.png", alt: '', class: '' %>
   <% end %>
