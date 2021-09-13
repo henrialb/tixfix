@@ -1,8 +1,5 @@
 class TicketsController < ApplicationController
   def show
-    @ticket = Ticket.find(params[:id])
-    @qr_code = @qr_code = RQRCode::QRCode.new(@ticket.qr_code)
-    @svg = @qr_code.as_svg
   end
 
   def index
