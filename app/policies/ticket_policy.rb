@@ -8,4 +8,8 @@ class TicketPolicy < ApplicationPolicy
   def show?
     record.event_category.event.organization == user.organization
   end
+
+  def validation?
+    admin_or_manager
+  end
 end

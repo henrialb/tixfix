@@ -24,13 +24,8 @@
     </div>
 
 
-    <%= f.submit :submit, class: 'btn-1', value: 'New event' %>
+    <%= f.submit :submit, class: 'btn-1', value: 'Next' %>
   <% end %>
 
+<%= link_to 'Go Back', root_path, method: :get, class: 'btn-2 mr-3' %>
 <%= render '../views/shared/forms/form_bottom'%>
-
-<div class="new-event-button d-flex justify-content-end">
-  <%= link_to root_path, method: :get, class: 'btn-2 mr-3' do %>
-            Go back
-  <% end %>
-</div>
