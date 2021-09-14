@@ -4,7 +4,7 @@
   <p class="font-weight-light mb-2 text-muted"><%= @event.starts_at.strftime("%A, %B %d, %Y") %> &thinsp; | &thinsp; <%= relative_time(@event) %></p>
   <div class="d-flex align-items-center justify-content-between">
     <h1 class="flex-grow-1"><%= @event.name %></h1>
-    <% if Time.now > @event.starts_at && Time.now < @event.ends_at %>
+    <% if Time.now > @event.starts_at - 2 * 60 * 60 && Time.now < @event.ends_at + 60 * 60 %>
       <div class="text-danger mr-4 uppercase">
         <span class="spinner-grow spinner-grow-sm" role="status"></span>
         <span style="letter-spacing: 1px;">&thinsp;LIVE</span>
