@@ -9,6 +9,7 @@
     <%= f.input :name, required: true, autofocus: true %>
     <%= f.input :avatar, as: :file %>
     <%= f.input :email, required: true %>
+    <%= f.input :is_validation, checked_value: true, unchecked_value: false %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>

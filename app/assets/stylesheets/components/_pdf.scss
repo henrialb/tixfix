@@ -1,0 +1,94 @@
+.pdf-body {
+  padding: 30px;
+  margin: 50px auto;
+  background: $white;
+
+  h1 {
+    font-size: 70px;
+    max-width: 700px;
+    text-shadow: 3px 3px 1px $core;
+  }
+
+  h2 {
+    font-size: 40px;
+    font-weight: 300;
+  }
+
+  p {
+    font-size: 20px;
+    font-weight: 300;
+    margin: 0;
+  }
+
+  .pdf-price {
+    font-size: 150px;
+    font-family: monospace;
+  }
+}
+
+.pdf-flyer {
+  width: 100%;
+  height: 700px;
+  background-size: cover;
+  border-radius: 10px;
+
+  h1 {
+    color: $white;
+    text-shadow: none;
+    max-width: 100%;
+    text-shadow: 3px 3px 2px $core;
+    letter-spacing: 70px;
+    font-size: 150px;
+  }
+
+  img {
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+  }
+}
+
+.pdf-bg-darker {
+  background: $darker;
+}
+
+.pdf-logo {
+  height: 150px;
+}
+
+.pdf-qr {
+  overflow: visible;
+}
+
+.pdf-venue-map {
+  margin: 0 50px;
+  width: auto;
+}
+
+// PDF specific flexbox classes
+
+.pdf-flex {
+  display: flex;
+}
+
+.j-s-around {
+  justify-content: space-around;
+}
+
+.j-s-between {
+  justify-content: space-between;
+}
+
+.a-i-center {
+  align-items: center;
+}
+
+// PDF specific spacing classes
+
+.mtop-3 {
+  margin-top: 16px;
+}
+
+.mbot-3 {
+  margin-bottom: 16px;
+}

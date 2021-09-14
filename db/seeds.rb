@@ -139,7 +139,7 @@ puts 'Done creating users!'
   name = "#{organization.name} vs. #{Faker::Sports::Basketball.team}"
   status = Event.statuses.keys.sample
   starts_at = status == 'past' ? Faker::Time.backward(days: 14) : Faker::Time.forward(days: 23)
-  ends_at = starts_at + 7 * 45 * 60
+  ends_at = starts_at + 7 * 15 * 60
 
   Event.create!(
     organization: organization,

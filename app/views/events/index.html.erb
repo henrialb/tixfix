@@ -12,8 +12,8 @@
               <p><%= event.venue.name %></p>
             </div>
             <div class="card-date">
-              <p> <%= event.starts_at %></p>
-              <p> <%= event.ends_at %></p>
+              <p><%= event.starts_at.strftime("%a %d %b %Y") %></p>
+              <p><%= event.starts_at.strftime("%-l:%M%p") %></p>
             </div>
           </div>
         </div>
