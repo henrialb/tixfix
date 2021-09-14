@@ -68,3 +68,5 @@ gem 'cloudinary', '~> 1.16.0'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'pundit'
 gem 'rqrcode'
+gem 'pdfkit'
+gem 'render_anywhere', require: false

@@ -95,7 +95,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 16px;
-  box-shadow: 1px 1px 5px $dark;
+  opacity: 0.8;
   border-radius: 10px 0 0 10px;
   background-color: $lighter;
 
@@ -106,21 +106,41 @@
 
   p {
     margin-bottom: 0;
+    font-weight: 300;
+  }
+
+  small {
+    font-weight: 300;
+    font-size: 12px;
   }
 
   &:hover {
     box-shadow: none;
+    opacity: 1;
+  }
+
+  .truncate {
+    max-width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
 .card-ticket-img-placeholder {
   width: 100px;
-  background-size: cover;
   background: $black;
   color: $white;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  background-size: cover;
+
+  img {
+    width: 100px;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 
@@ -151,11 +171,4 @@
 .card-ticket-stripe-info-right {
   text-align: right;
   padding: 8px 16px;
-}
-
-// print button
-
-.print-btn {
-  font-size: 40px;
-  margin: 0 16px;
 }

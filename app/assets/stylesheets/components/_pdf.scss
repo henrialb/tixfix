@@ -1,0 +1,61 @@
+.pdf-body {
+  margin: 50px auto;
+  padding: 30px;
+  background: $white;
+
+  h1 {
+    font-size: 70px;
+    max-width: 700px;
+    text-shadow: 3px 3px 1px $core;
+  }
+
+  h2 {
+    font-size: 40px;
+    font-weight: 300;
+  }
+
+  .pdf-price {
+    font-size: 150px;
+    font-family: monospace;
+  }
+}
+
+.pdf-flyer {
+  width: 100%;
+  height: 700px;
+  background-size: cover;
+  border-radius: 10px;
+
+  h1 {
+    color: $white;
+    text-shadow: none;
+    max-width: 100%;
+    text-shadow: 3px 3px 2px $core;
+    letter-spacing: 70px;
+    font-size: 150px;
+  }
+
+  img {
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+  }
+
+}
+
+.bg-darker {
+  background: $darker;
+}
+
+.pdf-logo {
+  height: 150px;
+}
+
+.pdf-qr {
+  overflow: visible;
+}
+
+.pdf-venue-map {
+  margin: 0 50px;
+  width: auto;
+}

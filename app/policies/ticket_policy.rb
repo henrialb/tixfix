@@ -1,11 +1,11 @@
 class TicketPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(organization: user.organization)
     end
+  end
 
-    def index
-      admin_or_manager
-    end
+  def print?
+    record.event_category.event.organization == user.organization
   end
 end

@@ -17,14 +17,6 @@ class EventPolicy < ApplicationPolicy
     owner_or_admin? && record.organization == user.organization
   end
 
-  # def edit?
-  #   owner_or_admin?
-  # end
-
-  # def index?
-  #   owner_or_admin?
-  # end
-
   private
 
   def owner_or_admin?
