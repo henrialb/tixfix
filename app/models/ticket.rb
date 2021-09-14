@@ -4,7 +4,7 @@ class Ticket < ApplicationRecord
 
   validates :hex, presence: true, uniqueness: true
 
-  before_validation :generate_hex
+  before_create :generate_hex
 
   def qr_code
     qr = RQRCode::QRCode.new(self.hex)
