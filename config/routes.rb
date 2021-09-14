@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   resources :venues, only: [:index, :show]
   resources :clients, except: :destroy
 
-  get "validation", to: "tickets#validation"
-
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
