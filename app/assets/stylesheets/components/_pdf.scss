@@ -1,6 +1,6 @@
 .pdf-body {
-  margin: 50px auto;
   padding: 30px;
+  margin: 50px auto;
   background: $white;
 
   h1 {
@@ -12,6 +12,12 @@
   h2 {
     font-size: 40px;
     font-weight: 300;
+  }
+
+  p {
+    font-size: 20px;
+    font-weight: 300;
+    margin: 0;
   }
 
   .pdf-price {
@@ -40,10 +46,9 @@
     height: 700px;
     object-fit: cover;
   }
-
 }
 
-.bg-darker {
+.pdf-bg-darker {
   background: $darker;
 }
 
@@ -58,4 +63,32 @@
 .pdf-venue-map {
   margin: 0 50px;
   width: auto;
+}
+
+// PDF specific flexbox classes
+
+.pdf-flex {
+  display: flex;
+}
+
+.j-s-around {
+  justify-content: space-around;
+}
+
+.j-s-between {
+  justify-content: space-between;
+}
+
+.a-i-center {
+  align-items: center;
+}
+
+// PDF specific spacing classes
+
+.mtop-3 {
+  margin-top: 16px;
+}
+
+.mbot-3 {
+  margin-bottom: 16px;
 }

@@ -69,4 +69,3 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'pundit'
 gem 'rqrcode'
 gem 'pdfkit'
-gem 'render_anywhere', require: false

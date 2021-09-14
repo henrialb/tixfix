@@ -5,7 +5,7 @@ class TicketPolicy < ApplicationPolicy
     end
   end
 
-  def print?
+  def show?
     record.event_category.event.organization == user.organization
   end
 end

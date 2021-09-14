@@ -6,11 +6,13 @@ Rails.application.routes.draw do
     resources :orders, except: [:edit, :update, :destroy]
   end
   resource :event_categories, except: [:index, :show]
-  resources :tickets, except: [:edit, :update, :destroy]
+  resources :tickets, except: [:edit, :update, :destroy] do
+    resources :downloads, only: [:show]
+  end
   resources :venues, only: [:index, :show]
   resources :clients, except: :destroy
 
-  get 'tickets/[:id]/print', to: 'downloads#print', as: :print_ticket
+  # get 'tickets/:id/print', to: 'downloads#print', as: :print_ticket
 
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
