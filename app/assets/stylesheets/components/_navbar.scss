@@ -49,3 +49,13 @@ li.nav-item {
   flex-direction: column;
   justify-content: space-around;
 }
+
+.custom-control-label {
+  color: white;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+
+  }
+}
