@@ -34,8 +34,8 @@ class TicketsController < ApplicationController
 
 
 
-      # If user belongs to organization and has the authorization
-      # level to validate tixs, ask if they want to turn validation mode ON
+      # If user belongs to organization and has the authorization level to validate tixs,
+      # Ask if they want to turn validation mode ON
 
 
     end
