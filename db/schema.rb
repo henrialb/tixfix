@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2021_09_14_112927) do
     t.boolean "is_used", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "validation", default: false
+    t.boolean "is_validation", default: false
     t.index ["event_category_id"], name: "index_tickets_on_event_category_id"
     t.index ["order_id"], name: "index_tickets_on_order_id"
   end
