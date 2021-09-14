@@ -1,3 +1,7 @@
 <div class="container">
-  <%= @ticket.is_used %>
+  <% if @success %>
+    Ticket validated successfuly.
+  <% else %>
+    Ticket is not valid.
+  <% end %>
 </div>
