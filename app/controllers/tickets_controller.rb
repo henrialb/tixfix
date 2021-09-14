@@ -13,7 +13,6 @@ class TicketsController < ApplicationController
 
   def validation
     ticket = Ticket.find_by(hex: params[:hash])
-    raise # Testing only - remove!
 
     if current_organization == ticket.order.event.organization
       # Check if user has the right authorization and has validation mode ON (create this?)
@@ -27,20 +26,23 @@ class TicketsController < ApplicationController
       # Validate ticket
       if validation_mode && live
         ticket.update(is_used: true)
+      elsif !validation_mode
+        # Validation not authorized
+        # If user belongs to organization and has the authorization level to validate tixs,
+        # Ask if they want to turn validation mode ON
+        print "Would you like to turn Validation mode on?"
+        input = gets.strip
+        if input == "yes"
+          current_user.is_validation = true
+          print "Validation mode enabled"
+        else
+          print "Validation mode disabled"
+        end
       end
+    else
+      print "Authorization denied. Please contact your organization"
+      # User does not belong to organization
 
-    # Validation not authorized
-    # If user belongs to organization and has the authorization level to validate tixs,
-    elsif current_user.is_validation == false && current_organization = ticket.order.event.organization
-      # Ask if they want to turn validation mode ON
-      print "Would you like to turn Validation mode on?"
-      input = gets.strip
-      if input == "yes"
-        current_user.is_validation = true
-        print "Validation mode enabled"
-      else
-        print "Validation mode disabled"
-      end
     end
   end
 end
