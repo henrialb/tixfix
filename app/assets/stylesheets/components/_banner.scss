@@ -5,6 +5,17 @@
   padding-top: 40vh;
   width: auto;
   text-align: center;
+
+  .arrow-down {
+    position: absolute;
+    bottom: 25px;
+    left: 49vw;
+    transition: transform 1.3s; /* Animation */
+  }
+
+  .arrow-down:hover {
+    transform: scale(1.2);
+  }
 }
 
 .banner-content {
