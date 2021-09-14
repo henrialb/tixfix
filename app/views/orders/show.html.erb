@@ -39,6 +39,7 @@
                     Already used ❌
                   </small>
                 <% else %>
+                  <%= link_to "Validate", validation_path(hash: ticket.hex) %>
                   <small>
                     Valid ✔
                   </small>
