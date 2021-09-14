@@ -2,7 +2,10 @@
   <div class="row">
     <div class="col-12 col-lg-8 offset-lg-2 bg-white rounded-lg p-3 mt-3 mb-5">
 
-      <h1><%= @order.event.name %></h1>
+      <%= link_to event_path(@event.id), method: :get, class: '' do %>
+        <h1><%= @event.name %></h1>
+      <% end%>
+
       <p>Order #<%= @order.id %></p>
 
       <% @order.tickets.each do |ticket| %>
@@ -21,10 +24,9 @@
               </div>
 
               <div class="card-ticket-stripe-info-left">
-                <h1><%= @event.name %></h1>
-                <p><%= @event.starts_at.strftime("%a %d %b %Y, %-l:%M%p") %></p>
-                <small>Ticket #<%= ticket.id %></small>
-                <small>QR # <%= ticket.hex %></small>
+                <h1 class="truncate"><%= @event.name %></h1>
+                <p class="truncate"><%= @event.starts_at.strftime("%a %d %b %Y, %-l:%M%p") %></p>
+                <small class="truncate text-monospace"># <%= ticket.hex %></small>
               </div>
             </div>
 
@@ -36,7 +38,7 @@
 
                 <% if ticket.is_used %>
                   <small class="danger">
-                    Already used ❌
+                    Used ❌
                   </small>
                 <% else %>
                   <%= link_to "Validate", validation_path(hash: ticket.hex) %>
@@ -47,15 +49,21 @@
               </div>
 
               <div class="card-ticket-img">
-                <%= ticket.qr_code %>
+                <%= ticket.qr_code(3) %>
               </div>
             </div>
 
           </div>
 
-          <%= link_to '', method: :get, class: 'print-btn' do %>
-            <i class="fas fa-print"></i>
-          <% end %>
+          <div class="mb-3">
+            <%= link_to '', method: :get, class: 'icon-btn' do %>
+              <i class="far fa-paper-plane"></i>
+            <% end %>
+
+            <%= link_to ticket_download_path(ticket.id, format: 'pdf'), method: :get, class: 'icon-btn', target: '_blank' do %>
+              <i class="fas fa-print"></i>
+            <% end %>
+          </div>
 
         </div>
 

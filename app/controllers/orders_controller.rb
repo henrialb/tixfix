@@ -49,6 +49,6 @@ class OrdersController < ApplicationController
   end
 
   def set_event
-    @event = Event.find(params[:event_id])
+    @event = Event.find(params[:event_id])#.includes(:order)
   end
 end
