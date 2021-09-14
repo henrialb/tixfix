@@ -24,25 +24,7 @@ class TicketsController < ApplicationController
       live = true if Time.now > live_starts_at && Time.now < live_ends_at
 
       # Validate ticket
-      if validation_mode && live
-        ticket.update(is_used: true)
-      elsif !validation_mode
-        # Validation not authorized
-        # If user belongs to organization and has the authorization level to validate tixs,
-        # Ask if they want to turn validation mode ON
-        print "Would you like to turn Validation mode on?"
-        input = gets.strip
-        if input == "yes"
-          current_user.is_validation = true
-          print "Validation mode enabled"
-        else
-          print "Validation mode disabled"
-        end
-      end
-    else
-      print "Authorization denied. Please contact your organization"
-      # User does not belong to organization
-
+      ticket.update(is_used: true) if validation_mode && live
     end
   end
 end
