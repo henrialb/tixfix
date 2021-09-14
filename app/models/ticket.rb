@@ -7,8 +7,8 @@ class Ticket < ApplicationRecord
   before_create :generate_hex
 
   def qr_code
-    qr = RQRCode::QRCode.new(self.hex)
-    svg = qr.as_svg(
+    qr = RQRCode::QRCode.new(hex)
+    qr.as_svg(
       offset: 0,
       color: '000',
       shape_rendering: 'crispEdges',

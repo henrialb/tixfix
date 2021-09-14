@@ -4,7 +4,7 @@
   <p class="font-weight-light mb-2 text-muted"><%= @event.starts_at.strftime("%A, %B %d, %Y") %> &thinsp; | &thinsp; <%= relative_time(@event) %></p>
   <div class="d-flex align-items-center justify-content-between">
     <h1 class="flex-grow-1"><%= @event.name %></h1>
-    <% if Time.now > @event.starts_at && Time.now < @event.ends_at %>
+    <% if Time.now > @event.starts_at - 2 * 60 * 60 && Time.now < @event.ends_at + 60 * 60 %>
       <div class="text-danger mr-4 uppercase">
         <span class="spinner-grow spinner-grow-sm" role="status"></span>
         <span style="letter-spacing: 1px;">&thinsp;LIVE</span>
@@ -30,9 +30,9 @@
         <% @event.event_categories.each do |category| %>
           <div class="mb-4">
             <div class="d-flex justify-content-between">
-              <span class="ps-3"><%= category.name %></span>
+              <span class="pl-3"><%= category.name %></span>
               <!-- <span class="flex-grow-1 bottom-dotted mx-3"></span>-->
-              <span class="pe-3"><%= category.price %>€</span>
+              <span class="pr-3"><%= category.price %>€</span>
             </div>
             <div class="progress progress-fat rounded-pill">
               <div class="progress-bar" role="progressbar"
@@ -42,8 +42,8 @@
               </div>
             </div>
             <div class="progress-info d-flex justify-content-between pt-2">
-              <div class="small ps-3"><%= "#{category.tickets.count} sold / #{category.percentage_sold}%" %></div>
-              <div class="font-weight-light small pe-3"><%= category.capacity - category.tickets.count %> to go</div>
+              <div class="small pl-3"><%= "#{category.tickets.count} sold / #{category.percentage_sold}%" %></div>
+              <div class="font-weight-light small pr-3"><%= category.capacity - category.tickets.count %> to go</div>
             </div>
           </div>
         <% end %>
