@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     devise_scope :user do
     get "new_user_organization", to: "registrations#new_user_organization"
     post "create_new_user_organization", to: "registrations#create_new_user_organization"
+
   end
   end
   resources :events, except: :destroy do
