@@ -54,7 +54,7 @@
             <%= link_to '', method: :get, class: 'icon-btn' do %>
               <i class="far fa-paper-plane"></i>
             <% end %>
-            <%= link_to ticket_download_path(ticket.id, format: 'pdf'), method: :get, class: 'icon-btn', target: '_blank' do %>
+            <%= link_to ticket_path(ticket.id), method: :get, class: 'icon-btn', target: '_blank' do %>
               <i class="fas fa-print"></i>
             <% end %>
           </div>
