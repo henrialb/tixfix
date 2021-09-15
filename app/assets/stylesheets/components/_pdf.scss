@@ -1,16 +1,19 @@
 .pdf-body {
+  // Standard A4 dimensions
+  height: 1400px;
+  width: 900px;
   padding: 30px;
   margin: 50px auto;
   background: $white;
 
   h1 {
-    font-size: 70px;
+    font-size: 60px;
     max-width: 700px;
     text-shadow: 3px 3px 1px $core;
   }
 
   h2 {
-    font-size: 40px;
+    font-size: 30px;
     font-weight: 300;
   }
 
@@ -21,14 +24,14 @@
   }
 
   .pdf-price {
-    font-size: 150px;
+    font-size: 70px;
     font-family: monospace;
   }
 }
 
 .pdf-flyer {
   width: 100%;
-  height: 700px;
+  height: 500px;
   background-size: cover;
   border-radius: 10px;
 
@@ -43,8 +46,9 @@
 
   img {
     width: 100%;
-    height: 700px;
+    height: 500px;
     object-fit: cover;
+    border-radius: 10px;
   }
 }
 
@@ -53,7 +57,7 @@
 }
 
 .pdf-logo {
-  height: 150px;
+  width: 300px;
 }
 
 .pdf-qr {
@@ -61,34 +65,11 @@
 }
 
 .pdf-venue-map {
+  height: 250px;
   margin: 0 50px;
   width: auto;
 }
 
-// PDF specific flexbox classes
-
-.pdf-flex {
-  display: flex;
-}
-
-.j-s-around {
-  justify-content: space-around;
-}
-
-.j-s-between {
-  justify-content: space-between;
-}
-
-.a-i-center {
-  align-items: center;
-}
-
-// PDF specific spacing classes
-
-.mtop-3 {
-  margin-top: 16px;
-}
-
-.mbot-3 {
-  margin-bottom: 16px;
+.pdf-text-right {
+  text-align: right;
 }
