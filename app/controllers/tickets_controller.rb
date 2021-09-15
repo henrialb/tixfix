@@ -29,8 +29,8 @@ before_action :set_variables, only: [:show]
       # Check if event is live
       live_starts_at = @ticket.order.event.starts_at - 60 * 60 * 2 # validation starts 2 hours before event start
       live_ends_at = @ticket.order.event.ends_at + 60 * 60 # ends 1 hour after event end
-      # live = true if Time.now > live_starts_at && Time.now < live_ends_at
-       live = true if Time.now < live_starts_at && Time.now < live_ends_at # FOR TESTING
+      live = true if Time.now > live_starts_at && Time.now < live_ends_at
+      # live = true if Time.now < live_starts_at && Time.now < live_ends_at # FOR TESTING
 
       # Validate @ticket
       if validation_mode && live
