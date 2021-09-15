@@ -17,7 +17,6 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
@@ -26,8 +25,6 @@ ActiveStorage.start()
 // External imports
 import "bootstrap";
 import "controllers";
-
-
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
