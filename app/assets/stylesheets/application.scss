@@ -30,7 +30,11 @@ a {
 
 body {
   margin:0;
-  background: rgba(220,220,220,0.8)
+  background: $gradient-color;
+}
+
+.text-shadow-light {
+  text-shadow: 1px 1px 1px $core;
 }
 
 .bottom-dotted {
