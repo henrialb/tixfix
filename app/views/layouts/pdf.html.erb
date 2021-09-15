@@ -1,0 +1,23 @@
+<%# Specific layout without navbar / footers / etc., but w/ stylesheets %>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;800&family=Roboto:wght@100;300;500&display=swap" rel="stylesheet">
+    <!-- STYLE LINKS -->
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application' %>
+  </head>
+
+  <body>
+
+    <%= yield %>
+
+  </body>
+</html>

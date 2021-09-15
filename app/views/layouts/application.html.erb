@@ -1,21 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sicktix</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>TickFix 🎟</title>
+    <!-- DEFAULT SETTINGS -->
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name='description' content='Digital ticketing app'>
+    <!-- STANDARD RAILS SECURITY FEATURES -->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;800&family=Roboto:wght@100;300;500&display=swap" rel="stylesheet">
+    <!-- STYLE LINKS -->
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
+    <%= stylesheet_pack_tag 'application' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
 
-    <%= yield %>
+    <%= render 'shared/navbar' %>
+
+    <div class="d-flex flex-column min-vh-100">
+      <div class="flex-grow-1" id="page-content">
+        <%= yield %>
+      </div>
+      <%= render 'shared/flashes' %>
+      <%= render 'shared/footer' %>
+    </div>
+
   </body>
 </html>

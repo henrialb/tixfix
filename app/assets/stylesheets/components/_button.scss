@@ -1,0 +1,54 @@
+.btn-1 {
+  background: $darker;
+  opacity: 0.8;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 50px;
+  display: inline-block;
+  box-shadow: 1px 1px 2px $core;
+  overflow: hidden;
+  font-size: 15px;
+  transition: ease 0.5s;
+
+  &:hover {
+    color: white;
+    text-shadow: 1px 2px 3px $core;
+    opacity: 1;
+    box-shadow: none;
+    cursor: pointer;
+  }
+}
+
+.btn-2 {
+  background: $lighter;
+  opacity: 0.8;
+  color: $darker;
+  padding: 10px 15px;
+  border-radius: 50px;
+  display: inline-block;
+  box-shadow: 1px 1px 2px $dark;
+  overflow: hidden;
+  font-size: 15px;
+  transition: ease 0.5s;
+
+  &:hover {
+    opacity: 1;
+    box-shadow: none;
+    cursor: pointer;
+  }
+}
+
+.new-event-button {
+  padding-bottom: 20px;
+}
+
+// print button
+
+.icon-btn {
+  font-size: 24px;
+  margin: 0 16px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

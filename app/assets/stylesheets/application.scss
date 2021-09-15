@@ -7,7 +7,44 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "flatpickr/dist/flatpickr";
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+    box-shadow: none;
+    text-decoration: none;
+  }
+}
+
+body {
+  margin:0;
+  background: $gradient-color;
+}
+
+.text-shadow-light {
+  text-shadow: 1px 1px 1px $core;
+}
+
+.bottom-dotted {
+  border-bottom: 1px dotted $dark;
+}
+
+.progress-thin {
+  height: 2px;
+}
+
+.progress-fat {
+  height: 28px;
+}

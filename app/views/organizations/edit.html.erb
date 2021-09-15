@@ -1,0 +1,12 @@
+<%= render '../views/shared/forms/form_top'%>
+
+  <h2>Edit Organization
+  <%= simple_form_for(@organization) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <%= f.input :name %>
+    <%= f.input :website%>
+    <%= f.button :submit, class: "btn-1"%>
+  <% end %>
+
+<%= render '../views/shared/forms/form_bottom'%>

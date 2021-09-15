@@ -1,0 +1,58 @@
+<%= render '../views/shared/forms/form_top'%>
+
+  <%= simple_form_for(@event) do |f| %>
+
+    <%# If first instance of Event_categories is invalid
+    Most likely means user is creating event for the first time %>
+    <% if @event.event_categories.first.valid? %>
+
+      <h2>Edit event</h2>
+      <%= f.input :name, autofocus: true %>
+      <%= f.association :venue, collection: Venue.all %>
+
+      <div class="row form-spacer">
+        <div class="form-group col">
+          <%= f.input :image, as: :file, label: "Upload your flyer 📢" %>
+        </div>
+        <div class="form-group col">
+          <%= f.input :venue_map, as: :file, label: "Upload your own venue map 🎫" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col">
+          <%= f.input :starts_at, as: :string, input_html: {class: "datepicker", id: "range_start"} %>
+        </div>
+        <div class="form-group col">
+          <%= f.input :ends_at, as: :string, input_html: {class: "datepicker", id: "range_end"} %>
+        </div>
+      </div>
+
+    <% end %>
+
+    <br>
+    <h2>Price categories</h2>
+    <div data-controller="event-category-add">
+      <template data-target="event-category-add.template">
+        <%= f.fields_for :event_categories, EventCategory.new, child_index: 'NEW_RECORD' do |form| %>
+          <%= render 'event_categories/fields', form: form %>
+        <% end %>
+      </template>
+
+      <%= f.fields_for :event_categories do |form| %>
+        <%= render 'event_categories/fields', form: form %>
+      <% end %>
+
+      <div class="form-group col" data-target="event-category-add.links">
+        <%= link_to '+ Add Category', class: '', data: { action: 'click->event-category-add#addField' } do %>
+          + Add category
+        <% end %>
+      </div>
+
+    </div>
+
+    <%= f.submit 'Submit', class: 'btn-1' %>
+    <%= link_to 'Cancel', event_path(@event), method: :get, class: 'btn-2' %>
+  <% end %>
+
+<%= render '../views/shared/forms/form_bottom'%>

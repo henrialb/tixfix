@@ -1,0 +1,47 @@
+<%= content_tag :div, class: "nested-fields", data: { new_record: form.object.new_record? } do %>
+
+  <div class="form-row" >
+
+    <div class="form-group col">
+      <%= form.input :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group col">
+      <%= form.input :price, class: "form-control" %>
+    </div>
+
+    <div class="form-group col">
+      <%= form.input :capacity, class: "form-control" %>
+    </div>
+
+    <div class="form-group col d-flex justify-content-around align-items-center">
+
+      <% if form.object.id.nil? %>
+
+        <%= link_to '',
+          data: {
+            action: 'click->event_category_add#removeField'
+            } do %>
+            <i class="fas fa-trash-alt"></i>
+        <% end %>
+
+      <% else %>
+
+        <%= link_to event_categories_path(form.object.id),
+          method: :delete,
+          data: {
+            confirm: "Are you sure?",
+            action: 'click->event_category_add#removeField'
+            } do %>
+            <i class="fas fa-trash-alt"></i>
+        <% end %>
+
+      <% end %>
+
+    </div>
+
+    <%= form.hidden_field :_destroy %>
+
+  </div>
+
+<% end %>

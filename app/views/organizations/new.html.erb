@@ -1,0 +1,4 @@
+
+<% if policy(Organization).create? %>
+  <%= link_to "New organization", new_organization_path %>
+<% end %>

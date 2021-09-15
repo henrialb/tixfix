@@ -11,7 +11,7 @@ $font-size-base: 1rem;
 
 // Colors
 $body-color: $gray;
-$primary:    $blue;
+$primary:    $darker;
 $success:    $green;
 $info:       $yellow;
 $danger:     $red;
@@ -23,3 +23,4 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+$spinner-animation-speed: 1.75s;

@@ -1,0 +1,55 @@
+.banner {
+  // background-image: url("https://picsum.photos/id/1058/2000/1500.jpg");
+  background-size: cover;
+  height: 100vh;
+  padding-top: 40vh;
+  width: auto;
+  text-align: center;
+
+  .arrow-down {
+    position: absolute;
+    bottom: 25px;
+    left: 49vw;
+    transition: transform 1.3s; /* Animation */
+  }
+
+  .arrow-down:hover {
+    transform: scale(1.2);
+  }
+}
+
+.banner-content {
+  color: white;
+  text-shadow: 1px 1px 2px $dark;
+
+  h1 {
+    font-size: 80px;
+  }
+
+  h2 {
+    font-size: 40px;
+    font-weight: 300;
+    text-align: left;
+    margin-left: 120px;
+
+    span {
+      font-weight: normal;
+    }
+  }
+
+  .btn-1 {
+    margin-top: 50px;
+    font-size: 30px;
+    padding: 20px 40px;
+    font-weight: lighter;
+    font-family: 'Montserrat', 'sans serif';
+    opacity: 1;
+  }
+
+  .btn-1:hover {
+    margin-right: 5px;
+    margin-bottom: 5px;
+    box-shadow: 5px 5px 10px $core;
+    text-shadow: 5px 5px 10px $core;
+  }
+}

@@ -1,6 +1,38 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background-color: transparent;
+  transition: 0.5s background-color ease;
+  text-shadow: 1px 1px 2px $dark;
+
+  .nav-item a {
+    color: white;
+  }
+
+  .btn-1 {
+    opacity: 0.9;
+  }
+
+  .dropdown-item {
+    text-shadow: none;
+    color: $darker;
+  }
+
+  a.dropdown-item {
+    color: $dark;
+  }
+}
+
+.navbar-lewagon-white {
+  background-color: white;
+  text-shadow: none;
+
+  .nav-item a {
+    color: $darker;
+  }
+
+  .nav-item a.btn-1 {
+    color: white;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,5 +40,22 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 150px;
+}
+
+li.nav-item {
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.custom-control-label {
+  color: white;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+
+  }
 }

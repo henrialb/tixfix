@@ -1,4 +1,14 @@
 // Define variables for your color scheme
+$black: rgba(0,0,0,1);
+$darker: #152744;
+$dark: #367591;
+$core: #61D2B4;
+$light: #9DFDC7;
+$lighter: rgba(245,245,245,0.4);
+$white: rgba(255,255,255,1);
+$white-10pc: rgba(255,255,255,0.1);
+$gradient-transparent: linear-gradient(120deg, rgba(0,0,0,0.2), rgba(170,170,170,0.2));
+$gradient-color: linear-gradient(120deg, rgba(157, 253, 199, 0.2), rgba(54, 117, 145, 0.4));
 
 // For example:
 $red: #FD1015;

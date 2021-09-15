@@ -1,0 +1,201 @@
+// --------------------------------------------------------------------------
+// LANDING PAGE CARDS
+
+.card-landing {
+  height: 450px;
+  max-width: 400px;
+  padding: 40px;
+  overflow: hidden;
+  margin: 70px auto;
+  padding: 10px 20px;
+  background: $white;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 1px 1px 2px $core;
+  transition: ease 1s;
+
+  img {
+    background-size: cover;
+    height: 60%;
+    width: 100%;
+  }
+
+  i {
+    font-size: 150px;
+    margin: 30px auto;
+    color: $darker;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  p {
+    font-size: 20px;
+    font-weight: 300;
+    color: $darker;
+  }
+
+  &:hover {
+    opacity: 1;
+    box-shadow: none;
+    margin: 40px auto;
+  }
+}
+
+// --------------------------------------------------------------------------
+// EVENTS STRIPES
+
+.card-title {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.card-stripe{
+  width: 100%;
+  height: 70%;
+  margin: 30px 0;
+  border-radius: 15px;
+  opacity: 0.8;
+  background-color: $lighter;
+
+  h2 {
+    font-size: 30px;
+  }
+
+  p {
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+.card-content{
+  text-align: center;
+  padding: 10px;
+}
+
+.card-date {
+  text-align: right;
+  margin-right: 20px;
+}
+
+// --------------------------------------------------------------------------
+// TICKETS STRIPES
+
+// Whole card properties
+.card-ticket-stripe {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  opacity: 0.8;
+  border-radius: 10px 0 0 10px;
+  background-color: $lighter;
+
+  h1 {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  p {
+    margin-bottom: 0;
+    font-weight: 300;
+  }
+
+  small {
+    font-weight: 300;
+    font-size: 12px;
+  }
+
+  &:hover {
+    box-shadow: none;
+    opacity: 1;
+  }
+
+  .truncate {
+    max-width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.card-ticket-img-placeholder {
+  width: 100px;
+  background: $black;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-size: cover;
+
+  img {
+    width: 100px;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+
+// Left-hand side properties
+.card-ticket-stripe-left {
+  display: flex;
+  height: 100%;
+
+  .card-ticket-img-placeholder {
+    border-radius: 10px 0 0 10px;
+  }
+}
+
+.card-ticket-stripe-info-left {
+  padding: 8px 16px;
+}
+
+// Right-hand side properties
+.card-ticket-stripe-right {
+  display: flex;
+  height: 100%;
+
+  .card-ticket-img-placeholder {
+    border-radius: 0 10px 10px 0;
+  }
+}
+
+.card-ticket-stripe-info-right {
+  text-align: right;
+  padding: 8px 16px;
+}
+
+// Ticket Validation card properties
+
+.card-validation-success {
+  background: white;
+  height: 300px;
+  width: 500px;
+  text-align: center;
+  margin: 50px auto;
+
+  i {
+    margin: 30px auto;
+    font-size: 80px;
+  }
+}
+
+.card-validation-fail {
+  background: white;
+  height: 300px;
+  width: 500px;
+  text-align: center;
+  margin: 50px auto;
+
+  i {
+    margin: 30px auto;
+    font-size: 80px;
+  }
+}
