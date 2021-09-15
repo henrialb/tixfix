@@ -16,16 +16,16 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create_new_user_organization
-   @user = User.new(user_params)
-   @user.organization = Organization.find(params[:organization_id])
-   if @user.save
-    redirect_to root_path
-   else
-    render :create_new_user_organization
-   end
+    @user = User.new(user_params)
+    @user.organization = Organization.find(params[:organization_id])
+    if @user.save
+      redirect_to root_path
+    else
+      render :create_new_user_organization
+    end
   end
 
- def user_params
+  def user_params
     params.require(:user).permit(:email, :name, :password, :password_confirmation)
- end
+  end
 end

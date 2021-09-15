@@ -7,11 +7,15 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import { Application } from "stimulus"
+import Remote from "stimulus-remote-rails"
+
+const application = Application.start()
+application.register("remote", Remote)
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
 
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
@@ -20,6 +24,7 @@ ActiveStorage.start()
 
 // External imports
 import "bootstrap";
+import "controllers";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -36,5 +41,3 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initFlatpickr();
 });
-
-import "controllers"

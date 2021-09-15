@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
 
+  # devise_scope :user do
+  #   post "change_validation", to: "registrations#change_validation"
+  # end
+
   resources :organizations, except: [:destroy] do
     devise_scope :user do
       get "new_user_organization", to: "registrations#new_user_organization"
@@ -16,6 +20,7 @@ Rails.application.routes.draw do
   resources :clients, except: :destroy
 
   get "validation", to: "tickets#validation"
+  post "change_validation", to: "pages#change_validation"
 
   root to: 'pages#home'
 

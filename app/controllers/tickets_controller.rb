@@ -29,8 +29,8 @@ before_action :set_variables, only: [:show]
       # Check if event is live
       live_starts_at = @ticket.order.event.starts_at - 60 * 60 * 2 # validation starts 2 hours before event start
       live_ends_at = @ticket.order.event.ends_at + 60 * 60 # ends 1 hour after event end
-      live = true if Time.now > live_starts_at && Time.now < live_ends_at
-      # live = true if Time.now < live_starts_at && Time.now < live_ends_at # FOR TESTING
+      # live = true if Time.now > live_starts_at && Time.now < live_ends_at
+      live = true if Time.now < live_starts_at && Time.now < live_ends_at # FOR TESTING
 
       # Validate @ticket
       if validation_mode && live
@@ -42,9 +42,9 @@ before_action :set_variables, only: [:show]
         end
         # redirect_to edit_user_registration_path, notice: "You are not authorized to validate!"
       elsif !validation_mode
-        redirect_to event_order_path(@ticket.order.event, @ticket.order), notice: "Validation mode is off!"
+        redirect_to event_order_path(@ticket.order.event, @ticket.order), alert: "Validation mode is off!"
       else
-        redirect_to event_order_path(@ticket.order.event, @ticket.order), notice: "This event is not live yet!"
+        redirect_to event_order_path(@ticket.order.event, @ticket.order), alert: "This event is not live yet!"
       end
     end
   end
