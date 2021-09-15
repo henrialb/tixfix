@@ -3,7 +3,7 @@ class Ticket < ApplicationRecord
   belongs_to :order
   has_one_attached :pdf
 
-  validates :hex, presence: true, uniqueness: true
+  #validates :hex, presence: true, uniqueness: true
 
   before_create :generate_hex
 
