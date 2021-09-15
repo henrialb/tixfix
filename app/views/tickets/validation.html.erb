@@ -3,15 +3,16 @@
     <% if @success %>
       <div class="card-validation-success">
         <i class="fas fa-check-square text-success"></i>
-        <h1>Ticket validated</h1>
-        <p>You will be receiving a confirmation email shortly</p>
+        <h1>Ticket validated 🎉</h1>
+        <p>You will be receiving a confirmation email shortly </p>
         <%= link_to 'Go back', event_order_path(@ticket.order.event, @ticket.order), method: :get, class: 'btn-1 mr-3' %>      </div>
     <% else %>
       <div class="card-validation-fail">
         <i class="fas fa-times-circle text-danger"></i>
-        <h1>Ticket is invalid</h1>
+        <h1>Ticket is invalid 👎</h1>
         <p>Please try again with a valid ticket</p>
         <%= link_to 'Go back', event_order_path(@ticket.order.event, @ticket.order), method: :get, class: 'btn-1 mr-3' %>
       </div>
     <% end %>
+
 </div>
