@@ -6,14 +6,11 @@
         <h1><%= @event.name %></h1>
       <% end%>
 
-      <p>Order #<%= @order.id %></p>
+      <p class="text-muted">Order #<%= @order.id %></p>
 
       <% @order.tickets.each do |ticket| %>
-
         <div class="d-flex justify-space-between align-items-center">
-
           <div class="card-ticket-stripe flex-grow-1">
-
             <div class="card-ticket-stripe-left">
               <div class="card-ticket-img-placeholder">
                 <% if @event.image.attached? %>
@@ -25,15 +22,14 @@
 
               <div class="card-ticket-stripe-info-left">
                 <h1 class="truncate"><%= @event.name %></h1>
-                <p class="truncate"><%= @event.starts_at.strftime("%a %d %b %Y, %-l:%M%p") %></p>
-                <small class="truncate text-monospace"># <%= ticket.hex %></small>
+                <p class="truncate text-muted"><%= @event.starts_at.strftime("%a %d %b %Y, %-l:%M%p") %></p>
+                <small class="truncate text-monospace text-primary"><%= ticket.hex %></small>
               </div>
             </div>
 
-
             <div class="card-ticket-stripe-right">
               <div class="card-ticket-stripe-info-right">
-                <p><%= ticket.event_category.name %></p>
+                <p class="text-muted"><%= ticket.event_category.name %></p>
                 <h1>€<%= ticket.event_category.price %></h1>
 
                 <% if ticket.is_used %>
@@ -41,7 +37,7 @@
                     Used ❌
                   </small>
                 <% else %>
-                  <%= link_to "Validate", validation_path(hash: ticket.hex) %>
+                  <%= link_to "Validate", validation_path(hash: ticket.hex) %> <%# FOR TESTING ONLY - REMOVE FOR PRODUCTION %>
                   <small>
                     Valid ✔
                   </small>
@@ -49,24 +45,20 @@
               </div>
 
               <div class="card-ticket-img">
-                <%= ticket.qr_code(3) %>
+                <%= ticket.qr_code(2) %>
               </div>
             </div>
-
           </div>
 
           <div class="mb-3">
             <%= link_to '', method: :get, class: 'icon-btn' do %>
               <i class="far fa-paper-plane"></i>
             <% end %>
-
             <%= link_to ticket_path(ticket.id), method: :get, class: 'icon-btn', target: '_blank' do %>
               <i class="fas fa-print"></i>
             <% end %>
           </div>
-
         </div>
-
       <% end %>
 
       <div class="d-flex justify-content-end">
@@ -82,7 +74,6 @@
           Print all
         <% end %>
       </div>
-
     </div>
   </div>
 </div>
