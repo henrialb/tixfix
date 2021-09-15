@@ -1,5 +1,5 @@
-<div class="container justify-content-between">
-  <h1 class="card-title">Upcoming events</h1>
+<div class="container justify-content-between bg-white rounded p-3">
+  <h1 class="card-title text-shadow-light">Upcoming events</h1>
     <% @events.each do |event| %>
       <%= link_to event, :action => 'go' do %> <%# Not working yet %>
         <div class="card-stripe">

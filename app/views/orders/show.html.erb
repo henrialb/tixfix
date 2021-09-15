@@ -3,7 +3,7 @@
     <div class="col-12 col-lg-8 offset-lg-2 bg-white rounded-lg p-3 mt-3 mb-5">
 
       <%= link_to event_path(@event.id), method: :get, class: '' do %>
-        <h1><%= @event.name %></h1>
+        <h1 class="text-shadow-light"><%= @event.name %></h1>
       <% end%>
 
       <p class="text-muted">Order #<%= @order.id %></p>
