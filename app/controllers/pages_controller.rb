@@ -3,4 +3,10 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def change_validation
+    current_user.is_validation = !current_user.is_validation
+    current_user.save
+    redirect_back(fallback_location: root_path)
+  end
 end

@@ -6483,6 +6483,11 @@ static-extend@^0.1.1:
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
 
+stimulus-remote-rails@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/stimulus-remote-rails/-/stimulus-remote-rails-3.0.1.tgz#760c96d6a4300e178cc01798b25149ce665d7849"
+  integrity sha512-s/PhBe9tyaz2s4qFyXARti5+s1Ak2FbCq5ek+1VJxCjW84qwNA5wdcEUxkUd0PzksKhqzcdWaWcWnaylB5W+Tw==
+
 stimulus@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/stimulus/-/stimulus-2.0.0.tgz#713c8b91a72ef90914b90955f0e705f004403047"

@@ -18,11 +18,9 @@
 
         <li class="nav-item">
           <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitches">
-            <% if controller_name == "pages" && action_name == "home" %>
-              <label class="custom-control-label pointer" for="customSwitches">Validation Mode</label>
-            <% else %>
-              <label class="custom-control-label pointer nav-item-dark" for="customSwitches">Validation Mode</label>
+            <%= link_to change_validation_path, method: :post do %>
+              <input type="checkbox" <%= 'checked' if current_user.is_validation %> class="custom-control-input" id="customSwitches">
+              <label class="custom-control-label pointer <%= 'nav-item-dark' unless controller_name == "pages" && action_name == "home" %>" for="customSwitches">Validation Mode</label>
             <% end %>
           </div>
         </li>
