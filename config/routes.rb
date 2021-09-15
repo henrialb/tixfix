@@ -13,9 +13,7 @@ Rails.application.routes.draw do
     resources :orders, except: [:edit, :update, :destroy]
   end
   resource :event_categories, except: [:index, :show]
-  resources :tickets, except: [:edit, :update, :destroy] do
-    resources :downloads, only: [:show]
-  end
+  resources :tickets, except: [:edit, :update, :destroy]
   resources :venues, only: [:index, :show]
   resources :clients, except: :destroy
 

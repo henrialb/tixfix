@@ -1,6 +1,12 @@
 class TicketsController < ApplicationController
+before_action :set_variables, only: [:show]
 
   def show
+    @ticket = Ticket.find(params[:id])
+
+    respond_to do |format|
+      format.html { render_html }
+    end
   end
 
   def index
@@ -41,5 +47,20 @@ class TicketsController < ApplicationController
         redirect_to event_order_path(@ticket.order.event, @ticket.order), notice: "This event is not live yet!"
       end
     end
+  end
+
+  private
+
+  def set_variables
+    @ticket = Ticket.find(params[:id])
+    authorize @ticket
+
+    @event_category = @ticket.event_category
+    @order = @ticket.order
+    @event = @event_category.event
+  end
+
+  def render_html
+    render @ticket.render_attributes
   end
 end
