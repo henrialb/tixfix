@@ -17,13 +17,13 @@
       <% if user_signed_in? %>
 
         <li class="nav-item">
-        <% if controller_name == "pages" && action_name == "home" %>
-          <div class="custom-control custom-switch nav-link">
-        <% else %>
-          <div class="custom-control custom-switch nav-link">
-        <% end %>
+          <div class="custom-control custom-switch">
             <input type="checkbox" class="custom-control-input" id="customSwitches">
-            <label class="custom-control-label" for="customSwitches">Validation Mode</label>
+            <% if controller_name == "pages" && action_name == "home" %>
+              <label class="custom-control-label pointer" for="customSwitches">Validation Mode</label>
+            <% else %>
+              <label class="custom-control-label pointer nav-item-dark" for="customSwitches">Validation Mode</label>
+            <% end %>
           </div>
         </li>
 
