@@ -23,11 +23,14 @@ Venue.destroy_all
 puts 'Destroying events'
 Event.destroy_all
 
-puts 'Destroying orders'
-Order.destroy_all
-
 puts 'Destroying event categories'
-EventCategory.destroy_all
+Event.destroy_all
+
+puts 'Destroying orders'
+Venue.destroy_all
+
+puts 'Destroying clients'
+Client.destroy_all
 
 puts 'Destroying tickets'
 Ticket.destroy_all
@@ -76,6 +79,11 @@ Venue.create!(name: 'Estádio Municipal 25 de Abril', address: 'Penafiel')
 puts 'Estádio Municipal 25 de Abril added to venues'
 Venue.create!(name: 'Estádio de São Luís', address: 'Faro')
 puts 'Estádio de São Luís added to venues'
+Venue.create!(name: 'Estádio de Le Wagon', address: 'Rua do Conde de Redondo 91B')
+puts 'Estádio de Le Wagon added to venues'
+Venue.create!(name: 'TixFix Arena', address: 'Av. Pierre de Coubertin, Cruz Quebrada')
+puts 'Tixfix Arena added to venues'
+
 
 puts "Done creating venues!"
 venues = Venue.all
@@ -134,6 +142,17 @@ puts 'Done creating users!'
 
 # Create events
 
+puts 'Creating events'
+
+status = Event.statuses.keys.sample
+starts_at = status == 'past' ? Faker::Time.backward(days: 14) : Faker::Time.forward(days: 23)
+ends_at = starts_at + 7 * 15 * 60
+
+Event.create!(organization: tixfix, venue: venues.sample, name: 'Tixfix vs BreedMe', starts_at: starts_at, ends_at: ends_at, status: status)
+Event.create!(organization: tixfix, venue: venues.sample, name: 'Le Wagon Athletics vs Academia de Código', starts_at: starts_at, ends_at: ends_at, status: status)
+Event.create!(organization: tixfix, venue: venues.sample, name: 'Ibuddy find vs Tixfix', starts_at: starts_at, ends_at: ends_at, status: status)
+
+
 21.times do
   organization = organizations.sample
   name = "#{organization.name} vs. #{Faker::Sports::Basketball.team}"
@@ -183,7 +202,7 @@ puts 'Done creating orders!'
 # Create tickets
 
 Order.all.each do |order|
-  rand(1..3).times do
+  rand(1..5).times do
     event_category = order.event.event_categories.sample
     is_used = order.event.ends_at < Time.now
 
