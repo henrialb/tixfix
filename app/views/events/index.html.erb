@@ -1,7 +1,7 @@
 <div class="container justify-content-between">
   <h1 class="card-title">Upcoming events</h1>
     <% @events.each do |event| %>
-      <%= link_to @event, :action => 'go' do %> <%# Not working yet %>
+      <%= link_to event, :action => 'go' do %> <%# Not working yet %>
         <div class="card-stripe">
           <div class="flex-container">
             <div class="flex-item img">
