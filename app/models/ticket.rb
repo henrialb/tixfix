@@ -4,7 +4,7 @@ class Ticket < ApplicationRecord
   has_one :download
   has_one_attached :pdf
 
-  validates :hex, presence: true, uniqueness: true
+  #validates :hex, presence: true, uniqueness: true
 
   before_create :generate_hex
 
