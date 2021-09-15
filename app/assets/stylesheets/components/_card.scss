@@ -172,3 +172,31 @@
   text-align: right;
   padding: 8px 16px;
 }
+
+// Ticket Validation card properties
+
+.card-validation-success {
+  background: white;
+  height: 300px;
+  width: 500px;
+  text-align: center;
+  margin: 50px auto;
+
+  i {
+    margin: 30px auto;
+    font-size: 80px;
+  }
+}
+
+.card-validation-fail {
+  background: white;
+  height: 300px;
+  width: 500px;
+  text-align: center;
+  margin: 50px auto;
+
+  i {
+    margin: 30px auto;
+    font-size: 80px;
+  }
+}
