@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_07_100113) do
+ActiveRecord::Schema.define(version: 2021_09_15_104026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,22 +69,22 @@ ActiveRecord::Schema.define(version: 2021_09_07_100113) do
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.bigint "organization_id", null: false
-    t.bigint "venues_id", null: false
+    t.bigint "venue_id", null: false
     t.index ["organization_id"], name: "index_events_on_organization_id"
-    t.index ["venues_id"], name: "index_events_on_venues_id"
+    t.index ["venue_id"], name: "index_events_on_venue_id"
   end
 
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "clients_id", null: false
-    t.bigint "events_id", null: false
-    t.index ["clients_id"], name: "index_orders_on_clients_id"
-    t.index ["events_id"], name: "index_orders_on_events_id"
+    t.bigint "event_id", null: false
+    t.bigint "client_id"
+    t.index ["client_id"], name: "index_orders_on_client_id"
+    t.index ["event_id"], name: "index_orders_on_event_id"
   end
 
   create_table "organizations", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "website"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 2021_09_07_100113) do
   create_table "tickets", force: :cascade do |t|
     t.bigint "event_category_id", null: false
     t.bigint "order_id", null: false
-    t.string "qr_code"
+    t.string "hex"
     t.boolean "is_used", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -111,7 +111,8 @@ ActiveRecord::Schema.define(version: 2021_09_07_100113) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.integer "role", default: 0, null: false
-    t.bigint "organization_id", null: false
+    t.bigint "organization_id"
+    t.boolean "is_validation", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["organization_id"], name: "index_users_on_organization_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -130,9 +131,9 @@ ActiveRecord::Schema.define(version: 2021_09_07_100113) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "event_categories", "events"
   add_foreign_key "events", "organizations"
-  add_foreign_key "events", "venues", column: "venues_id"
-  add_foreign_key "orders", "clients", column: "clients_id"
-  add_foreign_key "orders", "events", column: "events_id"
+  add_foreign_key "events", "venues"
+  add_foreign_key "orders", "clients"
+  add_foreign_key "orders", "events"
   add_foreign_key "tickets", "event_categories"
   add_foreign_key "tickets", "orders"
   add_foreign_key "users", "organizations"

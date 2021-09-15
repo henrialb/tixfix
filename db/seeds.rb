@@ -8,6 +8,9 @@
 
 require 'faker'
 
+puts 'Destroying clients'
+Client.destroy_all
+
 puts 'Destroying users'
 User.destroy_all
 
@@ -37,11 +40,16 @@ puts 'Done!'
 
 # Create organizations
 
+puts "Creating Tixfix Inc."
+tixfix = Organization.new(name: 'TixFix', website: 'www.tixfix.xyz')
+tixfix.save!
+puts "Done!"
+
 15.times do
-  organization = Faker::Sports::Football.team
+  organization = Faker::Sports::Football.unique.team
   website = Faker::Internet.domain_name
 
-  Organization.create!(organization: organization, website: website)
+  Organization.create!(name: organization, website: website)
 
   puts "Created organization #{organization}"
 end
@@ -55,9 +63,9 @@ Venue.create!(name: 'Estádio Municipal Mário Wilson', address: 'Rua Coro de Sa
 puts 'Estádio Municipal Mário Wilson added to venues'
 Venue.create!(name: 'Estádio José Gomes', address: 'Avenida Dom José Primeiro')
 puts 'Estádio José Gomes added to venues'
-Venue.create!(name: 'Estádio Municipal de Aveiro', address: 'Lugar Taboeira, Aveiro')
+Venue.create!(name: 'Estádio Municipal de Aveiro', address: 'Aveiro')
 puts 'Estádio Municipal de Aveiro added to venues'
-Venue.create!(name: 'Estádio Pina Manique', address: 'Estrada das Bungavilhas')
+Venue.create!(name: 'Estádio Pina Manique', address: 'Avenida Santos Dumont')
 puts 'Estádio Pina Manique added to venues'
 Venue.create!(name: 'Estádio Municipal do Fontelo', address: 'Avenida José Relvas 6, Viseu')
 puts 'Estádio Municipal do Fontelo added to venues'
@@ -65,14 +73,20 @@ Venue.create!(name: 'Estádio Marcolino de Castro', address: 'Avenida Clube Desp
 puts 'Estádio Marcolino de Castro added to venues'
 Venue.create!(name: 'Estádio Municipal de Mafra', address: 'Parque Desportivo Municipal de Mafra')
 puts 'Estádio Municipal de Mafra added to venues'
-Venue.create!(name: 'Estádio Municipal José dos Santos Pinto', address: 'Rua Sítio do Pinho do Gaiteiro 7, Covilhã')
+Venue.create!(name: 'Estádio Municipal José dos Santos Pinto', address: 'Covilhã')
 puts 'Estádio Municipal José dos Santos Pinto added to venues'
-Venue.create!(name: 'Estádio Municipal 25 de Abril', address: 'Rua Futebol Clube de Penafiel, Penafie')
+Venue.create!(name: 'Estádio Municipal 25 de Abril', address: 'Penafiel')
 puts 'Estádio Municipal 25 de Abril added to venues'
-Venue.create!(name: 'Estádio de São Lúis', address: 'Rua do Sporting Club Farense, Faro')
-puts 'Estádio de São Lúis added to venues'
+Venue.create!(name: 'Estádio de São Luís', address: 'Faro')
+puts 'Estádio de São Luís added to venues'
+Venue.create!(name: 'Estádio de Le Wagon', address: 'Rua do Conde de Redondo 91B')
+puts 'Estádio de Le Wagon added to venues'
+Venue.create!(name: 'TixFix Arena', address: 'Av. Pierre de Coubertin, Cruz Quebrada')
+puts 'Tixfix Arena added to venues'
+
 
 puts "Done creating venues!"
+venues = Venue.all
 
 # Create clients
 
@@ -95,6 +109,19 @@ clients = Client.all
 
 # Create users
 
+puts "Creating Tixfix-ers"
+User.create!(
+  name: 'Pedro',
+  email: 'pedro@tixfix.xyz',
+  password: '12345678',
+  role: 1,
+  organization: tixfix)
+
+User.create!(name: 'Henrique', email: 'henrique@tixfix.xyz', password: '12345678', role: 1, organization: tixfix)
+User.create!(name: 'Thierry', email: 'thierry@tixfix.xyz', password: '12345678', role: 1, organization: tixfix)
+User.create!(name: 'Artur', email: 'artur@tixfix.xyz', password: '12345678', role: 1, organization: tixfix)
+puts "Done!"
+
 35.times do
   name = "#{Faker::Name.first_name} #{Faker::Name.last_name}"
   email = Faker::Internet.email
@@ -105,7 +132,7 @@ clients = Client.all
     email: email,
     password: '123123',
     role: role,
-    organization_id: organization.sample.id
+    organization: organizations.sample
   )
 
   puts "Created user #{name}"
@@ -115,16 +142,25 @@ puts 'Done creating users!'
 
 # Create events
 
-25.times do
+puts 'Creating events'
+
+status = Event.statuses.keys.sample
+starts_at = status == 'past' ? Faker::Time.backward(days: 14) : Faker::Time.forward(days: 23)
+ends_at = starts_at + 7 * 15 * 60
+
+Event.create!(organization: tixfix, venue: venues.sample, name: 'Tixfix vs Sicktix', starts_at: starts_at, ends_at: ends_at, status: status)
+Event.create!(organization: tixfix, venue: venues.sample, name: 'Le Wagon Athletics vs Academia de Código', starts_at: starts_at, ends_at: ends_at, status: status)
+
+21.times do
   organization = organizations.sample
-  name = "#{organization.name} vs. #{Faker::Sports::Football.team}"
-  status = rand(0..4)
-  starts_at = status == 3 ? Faker::Time.backward(days: 14) : Faker::Time.forward(days: 23)
-  ends_at = starts_at + 7 * 45 * 60
+  name = "#{organization.name} vs. #{Faker::Sports::Basketball.team}"
+  status = Event.statuses.keys.sample
+  starts_at = status == 'past' ? Faker::Time.backward(days: 14) : Faker::Time.forward(days: 23)
+  ends_at = starts_at + 7 * 15 * 60
 
   Event.create!(
-    organization_id: organization.id,
-    venue_id: organization.venue.id,
+    organization: organization,
+    venue: venues.sample,
     name: name,
     starts_at: starts_at,
     ends_at: ends_at,
@@ -135,13 +171,14 @@ puts 'Done creating users!'
 end
 
 puts 'Done creating events!'
+events = Event.all
 
 # Create event categories
 events.each do |event|
   multiplier = rand(1..3)
-  EventCategory.create(event_id: event.id, price: 5 * multiplier, capacity: 5000, name: 'Superior')
-  EventCategory.create(event_id: event.id, price: 10 * multiplier, capacity: 2500, name: 'Lateral')
-  EventCategory.create(event_id: event.id, price: 15 * multiplier, capacity: 2500, name: 'Central')
+  EventCategory.create(event: event, price: 5 * multiplier, capacity: 300, name: 'Superior')
+  EventCategory.create(event: event, price: 10 * multiplier, capacity: 200, name: 'Lateral')
+  EventCategory.create(event: event, price: 15 * multiplier, capacity: 200, name: 'Central')
   puts "Categories created for #{event.name}"
 end
 
@@ -152,9 +189,9 @@ puts 'Done creating event categories'
 events.each do |event|
   rand(20..100).times do
     client_exists = [true, false].sample
-    client_id = client_exists ? clients.sample.id : nil
+    client = client_exists ? clients.sample : nil
 
-    Order.create!(event_id: event.id, client_id: client_id)
+    Order.create!(event: event, client: client)
   end
   puts 'New order created.'
 end
@@ -162,14 +199,13 @@ puts 'Done creating orders!'
 
 # Create tickets
 
-orders.each do |order|
-  rand(1..3).times do
-    event_category_id = events.event_category.sample.id
+Order.all.each do |order|
+  rand(1..4).times do
+    event_category = order.event.event_categories.sample
     is_used = order.event.ends_at < Time.now
-    qr_code_hash = SecureRandom.hex
 
-    Ticket.create!(event_category_id: event_category_id, order_id: order.id, qr_code: qr_code_hash, is_used: is_used)
-    puts "Ticket #{qr_code_hash} created."
+    ticket = Ticket.create!(event_category: event_category, order: order, is_used: is_used)
+    puts "Ticket #{ticket.hex} created."
   end
 end
 puts 'Done creating tickets!'
