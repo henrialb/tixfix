@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update]
 
   def index
-    @events = policy_scope(Event)
+    @events = policy_scope(Event).sort_by(&:starts_at).reverse
   end
 
   def show
