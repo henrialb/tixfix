@@ -119,6 +119,8 @@
   opacity: 0.8;
   border-radius: 10px 0 0 10px;
   background-color: $lighter;
+  box-shadow: 1px 1px 1px $light;
+  transition: ease 0.5s;
 
   h1 {
     font-size: 20px;
@@ -136,8 +138,8 @@
   }
 
   &:hover {
-    box-shadow: none;
     opacity: 1;
+    box-shadow: 5px 5px 10px $light;
   }
 
   .truncate {
