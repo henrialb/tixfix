@@ -5,8 +5,9 @@ const loadDynamicBannerText = () => {
     strings: [
       "Football game",
       "Underground rave",
+      "Dog breeding ^70 party ;)",
       "Surf competition",
-      "Dog breeding ^70 party ",
+      "Ninja Warriors brawl",
     ],
     typeSpeed: 100,
     loop: true
