@@ -4,7 +4,7 @@
 
     <%# If first instance of Event_categories is invalid
     Most likely means user is creating event for the first time %>
-    <% if @event.event_categories.first.valid? %>
+    <% unless @event.event_categories.first.id == nil %>
 
       <h2>Edit event</h2>
       <%= f.input :name, autofocus: true %>
@@ -30,7 +30,6 @@
 
     <% end %>
 
-    <br>
     <h2>Price categories</h2>
     <div data-controller="event-category-add">
       <template data-target="event-category-add.template">
@@ -48,7 +47,6 @@
           + Add category
         <% end %>
       </div>
-
     </div>
 
     <%= f.submit 'Submit', class: 'btn-1' %>

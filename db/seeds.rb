@@ -61,7 +61,7 @@ organizations = Organization.all
 
 Venue.create!(name: 'Estádio Municipal Mário Wilson', address: 'Rua Coro de Santo Amaro de Oeiras 12')
 puts 'Estádio Municipal Mário Wilson added to venues'
-Venue.create!(name: 'Estádio José Gomes', address: 'Avenida Dom José Primeiro')
+Venue.create!(name: 'Estádio José Gomes', address: 'Estádio José Gomes, Avenida Dom José I, Amadora')
 puts 'Estádio José Gomes added to venues'
 Venue.create!(name: 'Estádio Municipal de Aveiro', address: 'Aveiro')
 puts 'Estádio Municipal de Aveiro added to venues'
