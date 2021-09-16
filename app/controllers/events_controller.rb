@@ -3,6 +3,8 @@ class EventsController < ApplicationController
 
   def index
     @events = policy_scope(Event).sort_by(&:starts_at).reverse
+    @upcoming_events = @events.reverse.reject { |event| event.past? }
+    @past_events = @events - @upcoming_events
   end
 
   def show
@@ -65,5 +67,9 @@ class EventsController < ApplicationController
   def set_event
     @event = Event.find(params[:id])
     authorize @event
+  end
+
+  def past_events(events)
+    events.select! { |event| event.past? }
   end
 end
