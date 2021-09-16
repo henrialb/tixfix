@@ -5,28 +5,16 @@ class ClientPolicy < ApplicationPolicy
     end
   end
 
-  def new?
-    false
-  end
-
   def create?
-    false
+    true
   end
 
   def show?
     true
   end
 
-  def edit?
-    owner_or_admin?
-  end
-
   def update?
     owner_or_admin?
-  end
-
-  def index?
-    true
   end
 
   def destroy?

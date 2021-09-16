@@ -8,58 +8,66 @@
 
       <p class="text-muted">Order #<%= @order.id %></p>
 
-      <% @order.tickets.each do |ticket| %>
-        <div class="d-flex justify-space-between align-items-center">
-          <div class="card-ticket-stripe flex-grow-1">
-            <div class="card-ticket-stripe-left">
-              <div class="card-ticket-img-placeholder">
-                <% if @event.image.attached? %>
-                  <%= cl_image_tag @event.image.key, crop: :fill, alt: "event flyer" %>
-                <% else %>
-                  <h1>FUN!</h1>
-                <% end %>
+      <div class="container-tickets">
+        <% @order.tickets.each do |ticket| %>
+          <div class="d-flex justify-space-between align-items-center">
+            <div class="card-ticket-stripe flex-grow-1">
+              <div class="card-ticket-stripe-left">
+                <div class="card-ticket-img-placeholder">
+                  <% if @event.image.attached? %>
+                    <%= cl_image_tag @event.image.key, crop: :fill, alt: "event flyer" %>
+                  <% else %>
+                    <h1>FUN!</h1>
+                  <% end %>
+                </div>
+
+                <div class="card-ticket-stripe-info-left">
+                  <h1 class="truncate"><%= @event.name %></h1>
+                  <p class="truncate text-muted"><%= @event.starts_at.strftime("%a %d %b %Y, %-l:%M%p") %></p>
+                  <small class="truncate text-monospace text-primary"><%= ticket.hex %></small>
+                </div>
               </div>
 
-              <div class="card-ticket-stripe-info-left">
-                <h1 class="truncate"><%= @event.name %></h1>
-                <p class="truncate text-muted"><%= @event.starts_at.strftime("%a %d %b %Y, %-l:%M%p") %></p>
-                <small class="truncate text-monospace text-primary"><%= ticket.hex %></small>
+              <div class="card-ticket-stripe-right">
+                <div class="card-ticket-stripe-info-right">
+                  <p class="text-muted"><%= ticket.event_category.name %></p>
+                  <h1>€<%= ticket.event_category.price %></h1>
+
+                  <% if ticket.is_used %>
+                    <small class="danger">
+                      Used ❌
+                    </small>
+                  <% else %>
+                    <%= link_to "Validate", validation_path(hash: ticket.hex) %> <%# FOR TESTING ONLY - REMOVE FOR PRODUCTION %>
+                    <small>
+                      Valid ✔
+                    </small>
+                  <% end %>
+                </div>
+
+                <div class="card-ticket-img">
+                  <%= ticket.qr_code(2) %>
+                </div>
               </div>
             </div>
 
-            <div class="card-ticket-stripe-right">
-              <div class="card-ticket-stripe-info-right">
-                <p class="text-muted"><%= ticket.event_category.name %></p>
-                <h1>€<%= ticket.event_category.price %></h1>
+            <div class="mb-3">
+              <%= link_to '',
+                method: :get,
+                class: 'icon-btn',
+                data: { toggle: "modal",
+                        target: "#sendTicketModal",
+                        ticket_id: ticket.id } do %>
+                <i class="far fa-paper-plane"></i>
+              <% end %>
 
-                <% if ticket.is_used %>
-                  <small class="danger">
-                    Used ❌
-                  </small>
-                <% else %>
-                  <%= link_to "Validate", validation_path(hash: ticket.hex) %> <%# FOR TESTING ONLY - REMOVE FOR PRODUCTION %>
-                  <small>
-                    Valid ✔
-                  </small>
-                <% end %>
-              </div>
-
-              <div class="card-ticket-img">
-                <%= ticket.qr_code(2) %>
-              </div>
+              <%= link_to ticket_path(ticket.id), method: :get, class: 'icon-btn', target: '_blank' do %>
+                <i class="fas fa-print"></i>
+              <% end %>
             </div>
           </div>
-
-          <div class="mb-3">
-            <%= link_to '', method: :get, class: 'icon-btn' do %>
-              <i class="far fa-paper-plane"></i>
-            <% end %>
-            <%= link_to ticket_path(ticket.id), method: :get, class: 'icon-btn', target: '_blank' do %>
-              <i class="fas fa-print"></i>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
 
       <div class="d-flex justify-content-end">
         <%= link_to event_path(@event.id), method: :get, class: 'btn-2 mr-3 m-2' do %>
@@ -73,6 +81,30 @@
         <%= link_to '', method: :get, class: 'btn-1 mr-3 m-2' do %>
           Print all
         <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%# ------------------------------------------------------------------------------------------------------------- %>
+<%# MODAL - SEND TICKET %>
+
+<div class="modal fade" id="sendTicketModal" tabindex="-1" role="dialog" aria-labelledby="sendTicketModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="sendTicketModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
       </div>
     </div>
   </div>
