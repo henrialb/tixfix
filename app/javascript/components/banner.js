@@ -3,10 +3,11 @@ import Typed from 'typed.js';
 const loadDynamicBannerText = () => {
   new Typed('#banner-typed-text', {
     strings: [
-      "Football game",
+     "Football game",
       "Underground rave",
+      "Dog breeding ^70 party ;)",
       "Surf competition",
-      "Dog breeding ^70 party ",
+      "Ninja Warriors brawl",
     ],
     typeSpeed: 100,
     loop: true
