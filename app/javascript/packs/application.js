@@ -7,11 +7,6 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import { Application } from "stimulus"
-import Remote from "stimulus-remote-rails"
-
-const application = Application.start()
-application.register("remote", Remote)
 
 Rails.start()
 Turbolinks.start()

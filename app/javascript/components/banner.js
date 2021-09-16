@@ -5,7 +5,7 @@ const loadDynamicBannerText = () => {
     strings: [
      "Football game",
       "Underground rave",
-      "Dog breeding ^70 party ;)",
+      "Dog breeding ^70 party",
       "Surf competition",
       "Ninja Warriors brawl",
     ],
