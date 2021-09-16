@@ -18,4 +18,8 @@ class Event < ApplicationRecord
   def past?
     ends_at < Date.today
   end
+
+  def live?
+    starts_at < Time.now && ends_at > Time.now
+  end
 end
