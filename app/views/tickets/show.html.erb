@@ -1,9 +1,7 @@
 <%= render 'shared/ticket_pdf',
   layout: 'pdf',
-  locals: {
-    ticket: @ticket,
-    event_category: @event_category,
-    order: @order,
-    event: @event
-  }
+  ticket: @ticket,
+  event_category: @event_category,
+  order: @order,
+  event: @event
 %>

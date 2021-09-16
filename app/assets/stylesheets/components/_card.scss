@@ -47,7 +47,7 @@
 // --------------------------------------------------------------------------
 // EVENTS STRIPES
 
-.card-stripe {
+.card-stripe-event {
   width: 100%;
   height: 70%;
   margin: 30px auto;
@@ -82,7 +82,7 @@
   }
 }
 
-.card-stripe-link {
+.card-stripe-event-link {
   position: absolute;
   width:100%;
   height:100%;
@@ -90,17 +90,17 @@
   left:0px;
 }
 
-.card-stripe-title {
+.card-stripe-event-title {
   margin-top: 20px;
   margin-bottom: 40px;
 }
 
-.card-stripe-content {
+.card-stripe-event-content {
   text-align: center;
   padding: 10px;
 }
 
-.card-stripe-date {
+.card-stripe-event-date {
   text-align: right;
   padding: 10px 15px 10px 0;
 }

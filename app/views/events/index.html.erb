@@ -1,62 +1,20 @@
 <div class="container justify-content-between bg-white rounded p-3">
-  <h1 class="card-stripe-title text-shadow-light">Upcoming events</h1>
-
+  <h1 class="card-stripe-event-title text-shadow-light">Upcoming events</h1>
     <% @events.each do |event| %>
+
       <% if !event.past? %>
-        
-         <div class="card-stripe">
-          <%= link_to '', event, class: 'card-stripe-link' %>
-          <div class="d-flex justify-content-between">
-            <% if event.image.attached? %>
-              <%= cl_image_tag event.image.key, height: 300, width: 400, crop: :fill, alt: "flyer" %>
-            <% else %>
-              <%= image_tag 'placeholder.jpg' %>
-            <% end %>
-            <div class="card-stripe-content flex-grow-1">
-              <h2 ><%= link_to event.name, event %></h2>
-              <p><%= event.venue.name %></p>
-              <p><%= event.starts_at.strftime("%a %d %b %Y, %-l:%M%p") %></p>
-            </div>
-            <div class="card-stripe-date d-flex flex-column justify-content-between">
-              <div>
-              </div>
-              <p><%= relative_time(event) %></p>
-              <h3><%= number_to_currency(total_revenue(event), unit: '€', delimiter: ',', precision: 0) %>💰</h3>
-            </div>
-          </div>
-        </div>
-
+        <%= render 'shared/cards/card_stripe_event', event: event %>
       <% end %>
+
     <% end %>
-    <h1 class="card-stripe-title text-shadow-light">Past events</h1>
+    <h1 class="card-stripe-event-title text-shadow-light">Past events</h1>
     <% @events.each do |event| %>
+
       <% if event.past? %>
-        
-       <div class="card-stripe">
-        <%= link_to '', event, class: 'card-stripe-link' %>
-        <div class="d-flex justify-content-between">
-          <% if event.image.attached? %>
-            <%= cl_image_tag event.image.key, height: 300, width: 400, crop: :fill, alt: "flyer" %>
-          <% else %>
-            <%= image_tag 'placeholder.jpg' %>
-          <% end %>
-          <div class="card-stripe-content flex-grow-1">
-            <h2 ><%= link_to event.name, event %></h2>
-            <p><%= event.venue.name %></p>
-            <p><%= event.starts_at.strftime("%a %d %b %Y, %-l:%M%p") %></p>
-          </div>
-          <div class="card-stripe-date d-flex flex-column justify-content-between">
-            <div>
-            </div>
-            <p><%= relative_time(event) %></p>
-            <h3><%= number_to_currency(total_revenue(event), unit: '€', delimiter: ',', precision: 0) %>💰</h3>
-          </div>
-        </div>
-      </div>
-
+        <%= render 'shared/cards/card_stripe_event', event: event %>
       <% end %>
-    <% end %>
 
+    <% end %>
   <div class="d-flex justify-content-center p-3">
       <%= link_to root_path, method: :get, class: 'btn-2 mr-3' do %>
         Go back

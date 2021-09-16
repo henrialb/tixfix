@@ -48,6 +48,7 @@ class OrdersController < ApplicationController
   def print_all
     @order = Order.find(params[:id])
     authorize @order
+    render 'orders/print_all', layout: 'pdf'
   end
 
   private
