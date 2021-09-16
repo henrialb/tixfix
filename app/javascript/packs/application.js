@@ -28,16 +28,20 @@ import "controllers";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
-import { initUpdateNavbarOnScroll } from '../components/navbar';
-import { initMapbox } from '../components/mapbox';
-import { initFlatpickr } from "../plugins/flatpickr";
 import { loadDynamicBannerText } from '../components/banner';
+import { initUpdateNavbarOnScroll } from '../components/navbar';
+import { initFlatpickr } from "../plugins/flatpickr";
+import { initMapbox } from '../components/mapbox';
+import { initSendTicketModal } from '../components/send_ticket_modal';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  loadDynamicBannerText();
+  if (document.getElementById("pages-home")) {
+    loadDynamicBannerText();
+  }
   initUpdateNavbarOnScroll();
   initMapbox();
   initFlatpickr();
+  initSendTicketModal();
 });
