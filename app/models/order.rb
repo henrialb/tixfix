@@ -5,6 +5,8 @@ class Order < ApplicationRecord
 
   accepts_nested_attributes_for :tickets, allow_destroy: true
 
+  after_create :create_client
+
   def inventory
     # returns a hash of {event_category (obj) => tickets (obj) }
     hash = {}
@@ -13,5 +15,9 @@ class Order < ApplicationRecord
     end
     hash
     # Ticket.where(order_id: self.id).group(:event_category_id).count
+  end
+
+  def create_client
+    Client.create!(order: self)
   end
 end

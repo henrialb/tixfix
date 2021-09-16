@@ -12,4 +12,8 @@ class OrderPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def print_all?
+    show?
+  end
 end

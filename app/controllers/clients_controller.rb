@@ -1,18 +1,17 @@
 class ClientsController < ApplicationController
-  before_action :set_client, only: %i[show edit update]
+  before_action :set_client, only: %i[show]
 
   def new
-    @client = Client.new
-    authorize @client
   end
 
   def create
+    @order = params[:order_id]
+    @event = @order.event
     @client = Client.new(client_params)
-    @clients.organization = current_organization
     authorize @client
 
     if @client.save
-      redirect_to clients_path, notice: 'client was successfully created.'
+      redirect_to event_order_path(@event.id, @order.id), notice: 'client was successfully created.'
     else
       render :new
     end
@@ -27,6 +26,9 @@ class ClientsController < ApplicationController
   end
 
   def edit
+    @order = Order.find(params[:order_id])
+    @client = @order.client
+      authorize @client
   end
 
   def update

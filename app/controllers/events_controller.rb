@@ -1,12 +1,12 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update]
 
-  def show
-    @marker = [{ lat: @event.venue.latitude, lng: @event.venue.longitude }]
-  end
-
   def index
     @events = policy_scope(Event)
+  end
+
+  def show
+    @marker = [{ lat: @event.venue.latitude, lng: @event.venue.longitude }]
   end
 
   def new

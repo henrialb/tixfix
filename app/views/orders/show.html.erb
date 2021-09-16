@@ -51,13 +51,15 @@
               </div>
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3 d-flex">
               <%= link_to '',
-                method: :get,
+                #  DO NOT SPECIFY method: GET here ! you'll have the modal disappear
                 class: 'icon-btn',
                 data: { toggle: "modal",
                         target: "#sendTicketModal",
-                        ticket_id: ticket.id } do %>
+                        ticket_id: ticket.id,
+                        order_id: ticket.order.id
+                         } do %>
                 <i class="far fa-paper-plane"></i>
               <% end %>
 
@@ -78,8 +80,17 @@
           Back to Orders
         <% end %>
 
-        <%= link_to '', method: :get, class: 'btn-1 mr-3 m-2' do %>
-          Print all
+        <%= link_to print_all_path(@order.id), method: :get, target: "_blank", class: 'btn-1 mr-3 m-2' do %>
+          Print all <i class="fas fa-print"></i>
+        <% end %>
+
+        <%= link_to '',
+          #  DO NOT SPECIFY method: GET here ! you'll have the modal disappear
+          class: 'btn-1 mr-3 m-2',
+          data: { toggle: "modal",
+                  target: "#sendTicketModal",
+                  order_id: @order.id} do %>
+          Send all <i class="far fa-paper-plane"></i>
         <% end %>
       </div>
     </div>

@@ -26,8 +26,8 @@ import "controllers";
 import { loadDynamicBannerText } from '../components/banner';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { initFlatpickr } from "../plugins/flatpickr";
-import { initMapbox } from '../components/mapbox';
 import { initSendTicketModal } from '../components/send_ticket_modal';
+import { initMapbox } from '../components/mapbox';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -37,7 +37,7 @@ document.addEventListener('turbolinks:load', () => {
   }
 
   initUpdateNavbarOnScroll();
-  initMapbox();
   initFlatpickr();
   initSendTicketModal();
+  initMapbox();
 });
