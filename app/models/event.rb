@@ -16,7 +16,7 @@ class Event < ApplicationRecord
   validates_presence_of :name, :starts_at, :ends_at
 
   def past?
-    ends_at < Date.today
+    ends_at < Time.now
   end
 
   def live?

@@ -1,4 +1,5 @@
 <div class="container justify-content-between bg-white rounded p-3">
+
   <div class="d-flex justify-content-between align-items-center">
     <h1 class="card-stripe-event-title text-shadow-light">Live events</h1>
     <div class="text-danger mr-4 uppercase">
@@ -9,18 +10,17 @@
   <% @live_events.each do |event| %>
       <%= render 'shared/cards/card_stripe_event', event: event %>
   <% end %>
+
   <h1 class="card-stripe-event-title text-shadow-light">Upcoming events</h1>
-    <% @upcoming_events.each do |event| %>
-        <%= render 'shared/cards/card_stripe_event', event: event %>
-    <% end %>
-    <h1 class="card-stripe-event-title text-shadow-light">Past events</h1>
-    <% @past_events.each do |event| %>
+  <% @upcoming_events.each do |event| %>
+      <%= render 'shared/cards/card_stripe_event', event: event %>
+  <% end %>
 
-      <%# if event.past? %>
-        <%= render 'shared/cards/card_stripe_event', event: event %>
-      <%# end %>
+  <h1 class="card-stripe-event-title text-shadow-light">Past events</h1>
+  <% @past_events.each do |event| %>
+      <%= render 'shared/cards/card_stripe_event', event: event %>
+  <% end %>
 
-    <% end %>
   <div class="d-flex justify-content-center p-3">
       <%= link_to root_path, method: :get, class: 'btn-2 mr-3' do %>
         Go back
