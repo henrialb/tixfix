@@ -33,7 +33,8 @@ before_action :set_variables, only: [:show]
       live = true if Time.now < live_starts_at && Time.now < live_ends_at # FOR TESTING
 
       # Validate @ticket
-      if validation_mode && live
+      # if validation_mode && live
+      if validation_mode
         if @ticket.is_used
           @success = false
         else
