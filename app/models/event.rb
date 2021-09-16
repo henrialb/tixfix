@@ -14,4 +14,8 @@ class Event < ApplicationRecord
   enum status: { incomplete: 0, offsale: 1, onsale: 2, past: 3, cancelled: 4 }
 
   validates_presence_of :name, :starts_at, :ends_at
+
+  def past?
+    ends_at < Date.today
+  end
 end
