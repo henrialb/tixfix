@@ -155,7 +155,7 @@ tixfix_starts_at = DateTime.new(2021,9,17,20,30)
 ibuddy_starts_at = DateTime.new(2021,9,18,19,45)
 
 Event.create!(organization: tixfix, venue: tixfix_arena, name: 'Tixfix vs Breed Me', starts_at: tixfix_starts_at, ends_at: ends_at, status: status)
-Event.create!(organization: tixfix, venue: lewagon_stadium, name: 'Le Wagon Batch 683 vs Le Wagon Batch', starts_at: lewagon_starts_at, ends_at: ends_at, status: status)
+Event.create!(organization: tixfix, venue: lewagon_stadium, name: 'Le Wagon Batch 683 vs Le Wagon Teachers', starts_at: lewagon_starts_at, ends_at: ends_at, status: status)
 Event.create!(organization: tixfix, venue: venues.sample, name: 'IBuddy.find vs Tixfix', starts_at: ibuddy_starts_at, ends_at: ends_at, status: status)
 
 
