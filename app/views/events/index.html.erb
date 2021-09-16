@@ -2,9 +2,6 @@
   <h1 class="card-stripe-title text-shadow-light">Upcoming events</h1>
   <% @events.each do |event| %>
 
-
-
-
     <div class="card-stripe">
       <%= link_to '', event, class: 'card-stripe-link' %>
       <div class="d-flex justify-content-between">
@@ -16,10 +13,13 @@
         <div class="card-stripe-content flex-grow-1">
           <h2 ><%= link_to event.name, event %></h2>
           <p><%= event.venue.name %></p>
+          <p><%= event.starts_at.strftime("%a %d %b %Y, %-l:%M%p") %></p>
         </div>
-        <div class="card-stripe-date">
-          <p><%= event.starts_at.strftime("%a %d %b %Y") %></p>
-          <p><%= event.starts_at.strftime("%-l:%M%p") %></p>
+        <div class="card-stripe-date d-flex flex-column justify-content-between">
+          <div>
+          </div>
+          <p><%= relative_time(event) %></p>
+          <h3><%= number_to_currency(total_revenue(event), unit: '€', delimiter: ',', precision: 0) %>💰</h3>
         </div>
       </div>
     </div>

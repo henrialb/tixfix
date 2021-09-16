@@ -27,4 +27,8 @@ module EventsHelper
     end
     revenue
   end
+
+  def relative_time(event)
+    event.starts_at > Time.now ? "in #{time_ago_in_words(event.starts_at)}" : "#{time_ago_in_words(event.starts_at)} ago"
+  end
 end
