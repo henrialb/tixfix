@@ -3,7 +3,7 @@ class Ticket < ApplicationRecord
   belongs_to :order
   has_one_attached :pdf
 
-  #validates :hex, presence: true, uniqueness: true
+  # validates :hex, presence: true, uniqueness: true
 
   before_create :generate_hex
 
@@ -16,13 +16,6 @@ class Ticket < ApplicationRecord
       standalone: true,
       module_size: size
     ).html_safe
-  end
-
-  def render_attributes
-    {
-      template: 'tickets/show.html.erb',
-      layout: 'pdf',
-    }
   end
 
   private

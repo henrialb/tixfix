@@ -1,7 +1,7 @@
 class TicketPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.where(organization: user.organization)
+      scope.all
     end
   end
 
