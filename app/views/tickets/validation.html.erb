@@ -1,18 +1,16 @@
 <div class="container">
-
+  <div class="row">
     <% if @success %>
-      <div class="card-validation-success">
+      <div class="col-sm-12 col-lg-6 card-validation-success">
         <i class="fas fa-check-square text-success"></i>
-        <h1>Ticket validated 🎉</h1>
-        <p>You will be receiving a confirmation email shortly </p>
+        <h1 class="mb-5">Ticket validated 🎉</h1>
         <%= link_to 'Go back', event_order_path(@ticket.order.event, @ticket.order), method: :get, class: 'btn-1 mr-3' %>      </div>
     <% else %>
-      <div class="card-validation-fail">
+      <div class="col-sm-12 col-lg-6 card-validation-fail">
         <i class="fas fa-times-circle text-danger"></i>
-        <h1>Ticket is invalid 👎</h1>
-        <p>Please try again with a valid ticket</p>
+        <h1 class="mb-4">Ticket is invalid 👎</h1>
         <%= link_to 'Go back', event_order_path(@ticket.order.event, @ticket.order), method: :get, class: 'btn-1 mr-3' %>
       </div>
     <% end %>
-
+  </div>
 </div>
