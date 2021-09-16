@@ -1,18 +1,18 @@
 <div class="container justify-content-between bg-white rounded p-3">
   <h1 class="card-stripe-event-title text-shadow-light">Upcoming events</h1>
-    <% @events.each do |event| %>
+    <% @upcoming_events.each do |event| %>
 
-      <% if !event.past? %>
+      <%# if !event.past? %>
         <%= render 'shared/cards/card_stripe_event', event: event %>
-      <% end %>
+      <%# end %>
 
     <% end %>
     <h1 class="card-stripe-event-title text-shadow-light">Past events</h1>
-    <% @events.each do |event| %>
+    <% @past_events.each do |event| %>
 
-      <% if event.past? %>
+      <%# if event.past? %>
         <%= render 'shared/cards/card_stripe_event', event: event %>
-      <% end %>
+      <%# end %>
 
     <% end %>
   <div class="d-flex justify-content-center p-3">
