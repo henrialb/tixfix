@@ -4,7 +4,8 @@ class EventsController < ApplicationController
   def index
     @events = policy_scope(Event).sort_by(&:starts_at).reverse
     @upcoming_events = @events.reverse.reject { |event| event.past? }
-    @past_events = @events - @upcoming_events
+    @live_events = @events.select { |event| event.live? }
+    @past_events = @events - @upcoming_events - @live_events
   end
 
   def show
