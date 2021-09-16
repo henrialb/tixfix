@@ -8,8 +8,6 @@
 
 require 'faker'
 
-puts 'Destroying clients'
-Client.destroy_all
 
 puts 'Destroying users'
 User.destroy_all
@@ -92,22 +90,22 @@ venues = Venue.all
 
 # Create clients
 
-100.times do
-  name = "#{Faker::Name.first_name} #{Faker::Name.last_name}"
-  email = Faker::Internet.email
-  phone = Faker::PhoneNumber.phone_number_with_country_code
+# 100.times do
+#   name = "#{Faker::Name.first_name} #{Faker::Name.last_name}"
+#   email = Faker::Internet.email
+#   phone = Faker::PhoneNumber.phone_number_with_country_code
 
-  Client.create!(
-    name: name,
-    email: email,
-    phone: phone
-  )
+#   Client.create!(
+#     name: name,
+#     email: email,
+#     phone: phone
+#   )
 
-  puts "Created client #{name}"
-end
+#   puts "Created client #{name}"
+# end
 
-puts 'Done creating clients!'
-clients = Client.all
+# puts 'Done creating clients!'
+# clients = Client.all
 
 # Create users
 
@@ -196,10 +194,13 @@ puts 'Done creating event categories'
 
 events.each do |event|
   rand(20..100).times do
-    client_exists = [true, false].sample
-    client = client_exists ? clients.sample : nil
+    order = Order.create!(event: event)
 
-    Order.create!(event: event, client: client)
+    order.client.name = "#{Faker::Name.first_name} #{Faker::Name.last_name}"
+    order.client.email = Faker::Internet.email
+    order.client.phone = Faker::PhoneNumber.phone_number_with_country_code
+    order.client.save!
+    puts "Client: #{order.client.name} created"
   end
   puts 'New order created.'
 end

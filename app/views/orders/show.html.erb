@@ -58,7 +58,8 @@
                 data: { toggle: "modal",
                         target: "#sendTicketModal",
                         ticket_id: ticket.id,
-                        order_id: ticket.order.id
+                        order_id: ticket.order.id,
+                        client_id: ticket.order.client.id,
                          } do %>
                 <i class="far fa-paper-plane"></i>
               <% end %>
@@ -89,7 +90,9 @@
           class: 'btn-1 mr-3 m-2',
           data: { toggle: "modal",
                   target: "#sendTicketModal",
-                  order_id: @order.id} do %>
+                  order_id: @order.id,
+                  client_id: @order.client.id,
+                } do %>
           Send all <i class="far fa-paper-plane"></i>
         <% end %>
       </div>

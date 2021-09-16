@@ -1,20 +1,20 @@
 class ClientsController < ApplicationController
-  before_action :set_client, only: %i[show]
+  before_action :set_client, only: [:show, :edit, :update]
 
   def new
   end
 
   def create
-    @order = params[:order_id]
-    @event = @order.event
-    @client = Client.new(client_params)
-    authorize @client
+    # @order = params[:order_id]
+    # @event = @order.event
+    # @client = Client.new(client_params)
+    # authorize @client
 
-    if @client.save
-      redirect_to event_order_path(@event.id, @order.id), notice: 'client was successfully created.'
-    else
-      render :new
-    end
+    # if @client.save
+    #   redirect_to event_order_path(@event.id, @order.id), notice: 'Client successfully created.'
+    # else
+    #   render :new
+    # end
   end
 
   def index
@@ -22,18 +22,14 @@ class ClientsController < ApplicationController
   end
 
   def show
-    set_client
   end
 
   def edit
-    @order = Order.find(params[:order_id])
-    @client = @order.client
-      authorize @client
   end
 
   def update
     if @client.update(client_params)
-      redirect_to clients_path, notice: 'Client was successfully updated.'
+      redirect_to event_order_path(@client.order.event.id, @client.order.id), notice: 'Tix sent. Client successfully updated.'
     else
       render :edit
     end

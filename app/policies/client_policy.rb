@@ -14,16 +14,16 @@ class ClientPolicy < ApplicationPolicy
   end
 
   def update?
-    owner_or_admin?
+    owner?
   end
 
   def destroy?
-    owner_or_admin
+    owner?
   end
 
   private
 
-  def owner_or_admin?
-    user.client == record
+  def owner?
+    record.order.event.organization == user.organization
   end
 end

@@ -19,7 +19,10 @@ const initSendTicketModal = () => {
     // const objectId = button.data('objectId')
     const ticketId = button.data('ticketId')
     const orderId = button.data('orderId')
-    const url = `/clients/new` // Build url w/ data-attributes
+    const clientId = button.data('clientId')
+
+    // Build url w/ data-attributes
+    const url = `/clients/${clientId}/edit`
 
     // Extract and print inner HTML w/ Ajax
     $.ajax({
