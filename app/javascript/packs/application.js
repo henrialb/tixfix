@@ -40,6 +40,7 @@ document.addEventListener('turbolinks:load', () => {
   if (document.getElementById("pages-home")) {
     loadDynamicBannerText();
   }
+
   initUpdateNavbarOnScroll();
   initMapbox();
   initFlatpickr();

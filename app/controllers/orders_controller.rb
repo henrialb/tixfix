@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
     end
 
     if @order.save!
-      redirect_to event_orders_path(@event.id), notice: 'Order successfully created.'
+      redirect_to event_order_path(@event.id, @order.id), notice: 'Order successfully created.'
     else
       flash.now[:alert] = "Error: #{@order.errors.full_messages.join("\n")}"
       render :new

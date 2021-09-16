@@ -13,14 +13,18 @@ const initSendTicketModal = () => {
 
 
   // AJAX request to edit Modal's inner HTML
-  modal.on('show.bs.modal', function (event) {
+  $(modal).on('show.bs.modal', function (event) {
     // NOTA BENE: Bootstrap modal uses ES5 syntax
+    event.preventDefault();
+
     const button = $(event.relatedTarget) // Button that triggered the modal
-    const ticketId = button.data('ticketId') // Extract info from data-* attributes
-    const urlTicketShow = `tickets/${ticketId}` // Build url w/ data-attributes
-    // Extract students/:id inner HTML w/ Ajax
+    const objectId = button.data('ticketId') // Extract info from data-* attributes
+    const url = `tickets/${objectId}` // Build url w/ data-attributes
+
+    console.log(url)
+    // Extract tickets/:id inner HTML w/ Ajax
     $.ajax({
-      url: urlTicketShow,
+      url: url,
       dataType: "html",
       success: function (data) {
         // hack from https://stackoverflow.com/questions/18938180/how-to-get-the-html-of-a-div-on-another-page-with-jquery-ajax/18938994
