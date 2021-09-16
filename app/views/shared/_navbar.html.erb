@@ -26,10 +26,6 @@
         </li>
 
         <li class="nav-item active">
-          <%= link_to "Organization", organization_path(current_user.organization), class: "nav-link" %>
-        </li>
-
-        <li class="nav-item active">
           <%= link_to "Events", events_path, class: "nav-link" %>
         </li>
 
@@ -54,6 +50,7 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <p class="dropdown-item">Hi <%= current_user.name %></p>
             <%= link_to "Profile", edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "Organization", organization_path(current_user.organization), class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>

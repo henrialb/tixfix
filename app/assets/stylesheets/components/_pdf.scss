@@ -5,6 +5,7 @@
   padding: 30px;
   margin: 50px auto;
   background: $white;
+  position: relative;
 
   h1 {
     font-size: 60px;
@@ -26,6 +27,13 @@
   .pdf-price {
     font-size: 70px;
     font-family: monospace;
+  }
+
+  .btn-1 {
+    font-size: 25px;
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
   }
 }
 

@@ -17,11 +17,12 @@ Rails.application.routes.draw do
   resource :event_categories, except: [:index, :show]
   resources :tickets, except: [:edit, :update, :destroy]
   resources :venues, only: [:index, :show]
-  resources :clients, except: :destroy
+  resources :clients, except: [:destroy, :new, :create]
 
   get "validation", to: "tickets#validation"
   post "change_validation", to: "pages#change_validation"
-
+  get "print_all/:id", to: "orders#print_all", as: :print_all
+  # get "clients/new/:order_id", to: "clients#new", as: :new_client
   root to: 'pages#home'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

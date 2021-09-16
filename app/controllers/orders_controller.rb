@@ -26,20 +26,28 @@ class OrdersController < ApplicationController
 
         n_tickets.times do
           Ticket.create!(
-            event_category: category,
             order: @order,
+            event_category: category,
             is_used: false,
             )
+          end
         end
       end
-    end
+
+    client = Client.create
+    @order.client = client
 
     if @order.save!
-      redirect_to event_orders_path(@event.id), notice: 'Order successfully created.'
+      redirect_to event_order_path(@event.id, @order.id), notice: 'Order successfully created.'
     else
       flash.now[:alert] = "Error: #{@order.errors.full_messages.join("\n")}"
       render :new
     end
+  end
+
+  def print_all
+    @order = Order.find(params[:id])
+    authorize @order
   end
 
   private

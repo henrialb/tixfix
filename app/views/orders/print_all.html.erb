@@ -1,0 +1,21 @@
+<% @order.tickets.each do |ticket| %>
+
+  <%= ticket %>
+  <%= ticket.event_category %>
+  <%= @order.event %>
+  <%= @order %>
+
+  <%# This code returns "undefined local variable" strangely %>
+
+  <%#= render 'shared/ticket_pdf',
+  layout: 'pdf',
+  locals: {
+    ticket: ticket,
+    event_category: ticket.event_category,
+    event: @order.event,
+    order: @order
+    }
+  %>
+  <br>
+
+<% end %>

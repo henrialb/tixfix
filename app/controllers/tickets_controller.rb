@@ -9,9 +9,6 @@ before_action :set_variables, only: [:show]
     end
   end
 
-  def index
-  end
-
   def new
   end
 
@@ -61,6 +58,11 @@ before_action :set_variables, only: [:show]
   end
 
   def render_html
-    render @ticket.render_attributes
+    render 'tickets/show', layout: 'pdf', locals: {
+      ticket: @ticket,
+      event_category: @event_category,
+      order: @order,
+      event: @event
+    }
   end
 end
