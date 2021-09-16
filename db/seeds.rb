@@ -41,7 +41,7 @@ puts 'Done!'
 # Create organizations
 
 puts "Creating Tixfix Inc."
-tixfix = Organization.new(name: 'TixFix', website: 'www.tixfix.xyz')
+tixfix = Organization.new(name: 'Le Wagon Athletics', website: 'www.tixfix.xyz')
 tixfix.save!
 puts "Done!"
 
@@ -150,9 +150,13 @@ status = Event.statuses.keys.sample
 starts_at = status == 'past' ? Faker::Time.backward(days: 14) : Faker::Time.forward(days: 23)
 ends_at = starts_at + 7 * 15 * 60
 
-Event.create!(organization: tixfix, venue: tixfix_arena, name: 'Tixfix vs Breed Me', starts_at: starts_at, ends_at: ends_at, status: status)
-Event.create!(organization: tixfix, venue: lewagon_stadium, name: 'Le Wagon WebDev vs Le Wagon DataSci', starts_at: starts_at, ends_at: ends_at, status: status)
-Event.create!(organization: tixfix, venue: venues.sample, name: 'IBuddy.find vs Tixfix', starts_at: starts_at, ends_at: ends_at, status: status)
+lewagon_starts_at = DateTime.new(2021,9,16,17,30)
+tixfix_starts_at = DateTime.new(2021,9,17,20,30)
+ibuddy_starts_at = DateTime.new(2021,9,18,19,45)
+
+Event.create!(organization: tixfix, venue: tixfix_arena, name: 'Tixfix vs Breed Me', starts_at: tixfix_starts_at, ends_at: ends_at, status: status)
+Event.create!(organization: tixfix, venue: lewagon_stadium, name: 'Le Wagon Batch 683 vs Le Wagon Batch', starts_at: lewagon_starts_at, ends_at: ends_at, status: status)
+Event.create!(organization: tixfix, venue: venues.sample, name: 'IBuddy.find vs Tixfix', starts_at: ibuddy_starts_at, ends_at: ends_at, status: status)
 
 
 # 21.times do
