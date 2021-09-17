@@ -1,5 +1,5 @@
 meta_product_name: "TixFix"
 meta_title: "TixFix - Your tix, our Fix 🎉"
 meta_description: "Digital ticketing solution, made easy"
-meta_image: "logo.png" # should exist in `app/assets/images/`
+meta_image: "opengraph.jpg" # should exist in `app/assets/images/`
 # twitter_account: "@product_twitter_account"   # required for Twitter Cards
